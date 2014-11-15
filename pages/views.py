@@ -14,5 +14,5 @@ def results(request, character_id):
     return HttpResponse(response % character_id)
 
 
-# def region(request, region_id):
-#     return HttpResponse("The region is %s." % region_id)
+def region(request, region_id):
+    return HttpResponse("The region is %s." % region_id)
