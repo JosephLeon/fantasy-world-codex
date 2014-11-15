@@ -16,18 +16,8 @@ class Place(models.Model):
         return self.place_name
 
 
-class Building(models.Model):
-    region = models.ForeignKey(Region)
-    place = models.ForeignKey(Place)
-    building_name = models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.building_name
-
-
 class Character(models.Model):
     place = models.ForeignKey(Place)
-    building = models.ForeignKey(Building)
     character_name = models.CharField(max_length=200)
 
     def __str__(self):
@@ -36,7 +26,6 @@ class Character(models.Model):
 
 class Item(models.Model):
     place = models.ForeignKey(Place)
-    building = models.ForeignKey(Building)
     character = models.ForeignKey(Character)
     item_name = models.CharField(max_length=200)
 
