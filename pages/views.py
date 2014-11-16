@@ -17,10 +17,3 @@ def place(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     return render(request, 'pages/place.html', {'place': place})
 
-
-def results(request, character_id):
-    return render(request, 'pages/index.html')
-
-
-def region(request, region_id):
-    return render(request, 'pages/index.html')
