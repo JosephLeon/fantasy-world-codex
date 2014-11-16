@@ -8,12 +8,16 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
-def detail(request, region_id):
+# def detail(request, region_id):
+#     region = get_object_or_404(Region, pk=region_id)
+#     return render(request, 'pages/detail.html', {'region': region})
+
+
+def region(request, region_id):
     region = get_object_or_404(Region, pk=region_id)
-    return render(request, 'pages/detail.html', {'region': region})
+    return render(request, 'pages/region.html', {'region': region})
 
 
 def place(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     return render(request, 'pages/place.html', {'place': place})
-

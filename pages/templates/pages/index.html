@@ -2,7 +2,7 @@
 {% if region_list %}
     <ul>
     {% for region in region_list %}
-        <li><a href="{% url 'pages:detail' region.id %}">{{ region.region_name }}</a></li>
+        <li><a href="{% url 'pages:region' region.id %}">{{ region.region_name }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
