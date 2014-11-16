@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Region(models.Model):
@@ -25,7 +26,7 @@ class Character(models.Model):
 
 
 class Item(models.Model):
-    place = models.ForeignKey(Place)
+    place = models.ForeignKey(Place, blank=True, null=True)
     character = models.ForeignKey(Character)
     item_name = models.CharField(max_length=200)
 
