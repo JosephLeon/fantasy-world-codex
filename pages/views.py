@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from pages.models import Region
 
 
@@ -8,8 +8,9 @@ def index(request):
     return render(request, 'pages/index.html', context)
 
 
-def detail(request, character_id):
-    return render(request, 'pages/index.html')
+def detail(request, region_id):
+    region = get_object_or_404(Region, pk=region_id)
+    return render(request, 'pages/detail.html', {'region': region})
 
 
 def results(request, character_id):

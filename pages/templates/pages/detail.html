@@ -1,0 +1,7 @@
+<h1>{{ region.region_name }}</h1>
+
+<ul>
+{% for place in region.place_set.all %}
+    <li>{{ place.place_name }}</li>
+{% endfor %}
+</ul>
