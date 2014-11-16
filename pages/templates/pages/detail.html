@@ -1,7 +1,9 @@
 <h1>{{ region.region_name }}</h1>
 
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
 <ul>
 {% for place in region.place_set.all %}
-    <li>{{ place.place_name }}</li>
+    <li><a href="{% url 'pages:place' place.id %}">{{ place.place_name }}</li>
 {% endfor %}
 </ul>
