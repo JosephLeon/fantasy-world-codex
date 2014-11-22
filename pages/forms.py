@@ -5,7 +5,7 @@ from pages.models import Region
 
 class RegionForm(forms.ModelForm):
     name = forms.CharField(max_length=200, help_text="Please enter the region name.")
-    description = forms.CharField(widget=forms.Textarea)
+    description = forms.CharField(widget=forms.Textarea, help_text="Please describe the region.")
 
     class Meta:
         model = Region

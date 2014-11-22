@@ -19,7 +19,7 @@ class Place(models.Model):
     special_features = models.TextField(blank=True)
 
     def __str__(self):
-        return self.place_name
+        return self.name
 
 
 class Building(models.Model):

@@ -4,6 +4,6 @@
 
 <ul>
 {% for place in region.place_set.all %}
-    <li><a href="{% url 'pages:place' place.id %}">{{ place.place_name }}</li>
+    <li><a href="{% url 'pages:place' place.id %}">{{ place.name }}</a></li>
 {% endfor %}
 </ul>
