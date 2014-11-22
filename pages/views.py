@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from pages.models import Region, Place
-# from django.contrib.auth.models import User
+from pages.forms import RegionForm
 from pages.forms import UserForm
 
 
@@ -8,6 +8,7 @@ def index(request):
     region_list = Region.objects.all()
     context = {'region_list': region_list}
     return render(request, 'pages/index.html', context)
+    # return render(request, 'Holder')
 
 
 # def detail(request, region_id):
@@ -46,3 +47,17 @@ def register(request):
         'pages/registration.html',
         {'user_form': user_form, 'registered': registered}
     )
+
+
+def add_region(request):
+    if request.method == 'POST':
+        form = RegionForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = RegionForm()
+
+    return render(request, 'pages/add_region.html', {'form': form})
