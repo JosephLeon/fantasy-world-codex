@@ -12,7 +12,11 @@ class Region(models.Model):
 
 class Place(models.Model):
     region = models.ForeignKey(Region)
-    place_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    population = models.IntegerField(default=0)
+    description = models.TextField(blank=True)
+    economy = models.TextField(blank=True)
+    special_features = models.TextField(blank=True)
 
     def __str__(self):
         return self.place_name
