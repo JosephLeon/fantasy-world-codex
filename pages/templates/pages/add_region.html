@@ -7,7 +7,7 @@
     <body>
         <h1>Add a Region</h1>
 
-        <form id="region_form" method="post" action="/rango/add_region/">
+        <form id="region_form" method="post" action="/pages/add_region/">
 
             {% csrf_token %}
             {% for hidden in form.hidden_fields %}
