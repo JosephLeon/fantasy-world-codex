@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block body_block %}
+  <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+  <form class="form-signin" role="form" method="post" action="." style="margin-left:0;">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    {% csrf_token %}
+    <input class="form-control" placeholder="Username" id="id_username" maxlength="254" name="username" type="text" required autofocus=""/>
+    <input type="password" class="form-control" placeholder="Password" id="id_password" name="password" type="password" required />
+    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Sign in</button>
+
+    <hr>
+    <p>{% trans "Forgot password" %}? <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>!</p>
+    <p>{% trans "Not member" %}? <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>!</p>
+  </form>
+{% endblock %}
+
