@@ -17,7 +17,9 @@
     {% endblock foundation_css %}
 
     {# Custom CSS #}
-    {% block css %}{% endblock css %}
+    {% block css %}
+      <link rel="stylesheet" href="{% static "css/fwc.css" %}">
+    {% endblock css %}
 
     {# Override if you need another version of modernizr #}
     {% block foundation_modernizer %}
