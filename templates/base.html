@@ -59,7 +59,9 @@
     </section>
   </nav>
   {# Main content goes here #}
-  {% block base_body %}{% endblock base_body %}
+  <article>
+    {% block base_body %}{% endblock base_body %}
+  </article>
 
   {# Override if you need another version of jQuery #}
   {% block foundation_jquery %}

@@ -3,18 +3,14 @@
 {% load staticfiles %}
 
 {% block base_body %}
-  <h1>Codex</h1>
-
-  <p><a href="/pages/register" title="Register">Register</a></p>
-
   <h2>Regions</h2>
   <p><a href="/pages/add_region/">Add a New Region</a></p>
   {% if region_list %}
-      <ul>
-      {% for region in region_list %}
-          <li><a href="{% url 'pages:region' region.id %}">{{ region.name }}</a></li>
-      {% endfor %}
-      </ul>
+    <ul>
+    {% for region in region_list %}
+        <li><a href="{% url 'pages:region' region.id %}">{{ region.name }}</a></li>
+    {% endfor %}
+    </ul>
   {% else %}
       <p>No regions are available.</p>
   {% endif %}

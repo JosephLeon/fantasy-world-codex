@@ -1,7 +1,13 @@
-<h1>{{ place.name }}</h1>
+{% extends "base.html" %}
 
-<p>Belongs to the region: <a href="#">{{ place.region }}</a></p>
-<p>Population: {{ place.population }}</p>
-<p>Description: {{ place.description }}</p>
-<p>Economy: {{ place.economy }}</p>
-<p>Special Features: {{ place.special_features }}</p>
+{% load staticfiles %}
+
+{% block base_body %}
+  <h1>{{ place.name }}</h1>
+
+  <p>Belongs to the region: <a href="#">{{ place.region }}</a></p>
+  <p>Population: {{ place.population }}</p>
+  <p>Description: {{ place.description }}</p>
+  <p>Economy: {{ place.economy }}</p>
+  <p>Special Features: {{ place.special_features }}</p>
+{% endblock base_body %}

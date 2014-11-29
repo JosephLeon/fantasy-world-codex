@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Fantasy World Codex - Add Place</title>
-    </head>
+{% extends "base.html" %}
 
-    <body>
-        <h1>Add a Place</h1>
+{% load staticfiles %}
 
-        <form id="place_form" method="post" action="/pages/add_place/">
+{% block base_body %}
+    <h1>Add a Place</h1>
 
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
+    <form id="place_form" method="post" action="/pages/add_place/">
 
-            {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-            {% endfor %}
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
 
-            <input type="submit" name="submit" value="Create Place" />
-        </form>
-    </body>
+        {% for field in form.visible_fields %}
+            {{ field.errors }}
+            {{ field.help_text }}
+            {{ field }}
+        {% endfor %}
 
-</html>
+        <input type="submit" name="submit" value="Create Place" />
+    </form>
+{% endblock base_body %}

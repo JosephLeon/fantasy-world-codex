@@ -1,11 +1,17 @@
-<h1>{{ region.name }}</h1>
+{% extends "base.html" %}
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% load staticfiles %}
 
-<p><a href="/pages/add_place/">Add a New Place</a></p>
+{% block base_body %}
+  <h1>{{ region.name }}</h1>
 
-<ul>
-{% for place in region.place_set.all %}
-    <li><a href="{% url 'pages:place' place.id %}">{{ place.name }}</a></li>
-{% endfor %}
-</ul>
+  {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+  <p><a href="/pages/add_place/">Add a New Place</a></p>
+
+  <ul>
+  {% for place in region.place_set.all %}
+      <li><a href="{% url 'pages:place' place.id %}">{{ place.name }}</a></li>
+  {% endfor %}
+  </ul>
+{% endblock base_body %}
