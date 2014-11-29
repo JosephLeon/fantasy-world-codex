@@ -1,27 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Fantasy World Codex - Add Region</title>
-    </head>
+{% extends "base.html" %}
 
-    <body>
-        <h1>Add a Region</h1>
+{% load staticfiles %}
 
-        <form id="region_form" method="post" action="/pages/add_region/">
+{% block base_body %}
+  <h1>Add a Region</h1>
+  <form id="region_form" method="post" action="/pages/add_region/">
+    {% csrf_token %}
+    {% for hidden in form.hidden_fields %}
+      {{ hidden }}
+    {% endfor %}
 
-            {% csrf_token %}
-            {% for hidden in form.hidden_fields %}
-                {{ hidden }}
-            {% endfor %}
+    {% for field in form.visible_fields %}
+      {{ field.errors }}
+      {{ field.help_text }}
+      {{ field }}
+    {% endfor %}
 
-            {% for field in form.visible_fields %}
-                {{ field.errors }}
-                {{ field.help_text }}
-                {{ field }}
-            {% endfor %}
+    <label>Region Name
+      <input class="" placeholder="Region Name" id="id_name" maxlength="200" name="name" type="text" required autofocus=""/>
+    </label>
+    <label>Region Description
+      <textarea placeholder="Region Description"></textarea>
+    </label>
+    <input class="button" type="submit" name="submit" value="Create Region" />
+  </form>
+{% endblock base_body %}
 
-            <input type="submit" name="submit" value="Create Region" />
-        </form>
-    </body>
-
-</html>
