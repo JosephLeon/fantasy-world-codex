@@ -10,17 +10,17 @@
       {{ hidden }}
     {% endfor %}
 
-    {% for field in form.visible_fields %}
-      {{ field.errors }}
-      {{ field.help_text }}
-      {{ field }}
-    {% endfor %}
+    {# {% for field in form.visible_fields %} #}
+      {# {{ field.errors }} #}
+      {# {{ field.help_text }} #}
+      {# {{ field }} #}
+    {# {% endfor %} #}
 
     <label>Region Name
       <input class="" placeholder="Region Name" id="id_name" maxlength="200" name="name" type="text" required autofocus=""/>
     </label>
     <label>Region Description
-      <textarea placeholder="Region Description"></textarea>
+      <textarea cols="40" rows="8" placeholder="Region Description" id="id_description" name="description"></textarea>
     </label>
     <input class="button" type="submit" name="submit" value="Create Region" />
   </form>
