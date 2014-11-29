@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Fantasy World Codex - {% block title %}A free opensource fantasy roleplaying world builder{% endblock %}</title>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        {% if user.is_authenticated %}
+          <li><a href="/pages/restricted/">Restricted Page</a></li>
+          <li><a href="/pages/logout/">Logout</a></li>
+          <li><a href="/pages/add_category/">Add a New Category</a></li>
+        {% else %}
+          <li><a href="/pages/register/">Register Here</a></li>
+          <li><a href="/pages/login/">Login</a></li>
+        {% endif %}
+          <li><a href="/pages/about/">About</a></li>
+      </ul>
+    </nav>
+    <article>
+      {% block body_block %}{% endblock %}
+    </article>
+  </body>
+</html>
