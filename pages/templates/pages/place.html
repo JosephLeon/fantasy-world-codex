@@ -5,7 +5,8 @@
 {% block base_body %}
   <h1>{{ place.name }}</h1>
 
-  <p>Belongs to the region: <a href="#">{{ place.region }}</a></p>
+  <p>{{ place.region.id }}</p>
+  <p>Belongs to the region: <a href="/pages/regions/{{ place.region.id }}">{{ place.region.name }}</a></p>
   <p>Population: {{ place.population }}</p>
   <p>Description: {{ place.description }}</p>
   <p>Economy: {{ place.economy }}</p>

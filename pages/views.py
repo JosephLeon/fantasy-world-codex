@@ -16,8 +16,13 @@ def region(request, region_id):
 
 
 def place(request, place_id):
+    context_dict = {}
+
     place = get_object_or_404(Place, pk=place_id)
-    return render(request, 'pages/place.html', {'place': place})
+    context_dict['place'] = place
+    region = Region.objects.filter(place=place_id)
+    context_dict['region'] = region
+    return render(request, 'pages/place.html', context_dict)
 
 
 def register(request):
