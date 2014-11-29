@@ -91,3 +91,9 @@ INTERNAL_IPS = ('127.0.0.1',)
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+# debug_toolbar settings
+
+
+def custom_show_toolbar(request):
+    return True
