@@ -5,6 +5,8 @@
 {% block base_body %}
   <h1>{{ region.name }}</h1>
 
+  <p>{{ region.description }}</p>
+
   {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
   <p><a href="/pages/add_place/">Add a New Place</a></p>
