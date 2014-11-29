@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 
-{% block body_block %}
+{% block base_body %}
   <h1>Codex</h1>
 
   <p><a href="/pages/register" title="Register">Register</a></p>
@@ -18,4 +18,4 @@
   {% else %}
       <p>No regions are available.</p>
   {% endif %}
-{% endblock body_block %}
+{% endblock base_body %}
