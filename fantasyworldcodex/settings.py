@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'pages',
     'debug_toolbar',
+    'registration'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,3 +98,11 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 def custom_show_toolbar(request):
     return True
+
+# Authentication
+# LOGIN_URL = '/rango/login/'
+REGISTRATION_OPEN = True
+ACCOUNT_ACTIVATION_DAYS = 7
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/pages/'
+LOGIN_URL = '/accounts/login/'
