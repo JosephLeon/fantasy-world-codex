@@ -1,5 +1,5 @@
 from django import template
-from models.pages import Place, Region
+from pages.models import Place, Region
 
 register = template.Library()
 
