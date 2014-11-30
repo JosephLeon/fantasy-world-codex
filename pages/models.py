@@ -23,7 +23,6 @@ class Place(models.Model):
 
 
 class Building(models.Model):
-    region = models.ForeignKey(Region)
     place = models.ForeignKey(Place, blank=True, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
