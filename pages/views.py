@@ -21,7 +21,10 @@ def place(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     context_dict['place'] = place
     region = Region.objects.filter(place=place_id)
+    region_id = place.region.id
+    region_places = Place.objects.filter(region=region_id)
     context_dict['region'] = region
+    context_dict['region_places'] = region_places
     return render(request, 'pages/place.html', context_dict)
 
 

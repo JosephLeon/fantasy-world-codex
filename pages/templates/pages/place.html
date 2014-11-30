@@ -3,8 +3,17 @@
 {% load staticfiles %}
 
 {% block base_body %}
+  <aside id="places-in-region">
+    <p>Other places in {{ place.region }}</p>
+    {% for place in place.region.place_set.all %}
+        <li><a href="{% url 'pages:place' place.id %}">{{ place.name }}</a></li>
+    {% endfor %}
+  </aside>
+
   <h1>{{ place.name }}</h1>
+
   <p>Belongs to the region: <a href="{% url 'pages:region' place.region.id %}">{{ place.region.name }}</a></p>
+
   <p>Population: {{ place.population }}</p>
   <p>Description: {{ place.description }}</p>
   <p>Economy: {{ place.economy }}</p>

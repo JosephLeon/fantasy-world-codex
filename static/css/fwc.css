@@ -1,3 +1,7 @@
 article {
   padding: 20px;
 }
+
+#places-in-region {
+  float: right;
+}

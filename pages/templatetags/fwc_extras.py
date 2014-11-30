@@ -9,6 +9,6 @@ def get_region_list():
     return {'regions': Region.objects.all()}
 
 
-@register.inclusion_tag('pages/places.html')
-def get_place_list():
+@register.inclusion_tag('pages/other_places.html')
+def get_other_places_list():
     return {'places': Place.objects.all()}
