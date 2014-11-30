@@ -53,13 +53,17 @@ def building(request, building_id):
 
 
 def character(request, character_id):
-    context = {}
+    context_dict = {}
 
     # Character.
     character = get_object_or_404(Character, pk=character_id)
-    context['character'] = character
+    context_dict['character'] = character
 
-    return render(request, 'pages/character.html', context)
+    # Items that belong to this character.
+    items = Item.objects.filter(character=character_id)
+    context_dict['items'] = items
+
+    return render(request, 'pages/character.html', context_dict)
 
 
 def item(request, item_id):

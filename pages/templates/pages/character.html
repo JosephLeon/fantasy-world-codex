@@ -63,4 +63,13 @@
   <p>description: {{ character.description }}</p>
   <p>gold: {{ character.gold }}</p>
 
+  {% if items %}
+    <h2>Items</h2>
+    <ul>
+      {% for item in items %}
+        <li><a href="{% url 'pages:item' item.id %}" title="{{ item }}">{{ item }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
 {% endblock base_body %}
