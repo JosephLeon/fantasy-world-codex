@@ -5,6 +5,30 @@
 {% block base_body %}
   <h2>Regions</h2>
   <p><a href="/pages/add_region/">Add a New Region</a></p>
+
+  {% if region_list %}
+  <ul class="small-block-grid-1 medium-block-grid-3">
+    <li>
+      <dl class="accordion" data-accordion="myAccordionGroup">
+        {% for region in region_list %}
+          <dd class="accordion-navigation">
+            {{ region.name }}<a href="#panel{{ region.id }}">(see places)</a>
+            <div id="panel{{ region.id }}" class="content">
+              <ul>
+                {% for place in place_list %}
+                  {% if place.region == region %}
+                    <li><a href="{% url 'pages:place' place.id %}" title="">{{ place.name }}</a></li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            </div>
+          </dd>
+        {% endfor %}
+      </dl>
+    </li>
+  </ul>
+  {% endif %}
+
   {% if region_list %}
     <ul>
     {% for region in region_list %}
