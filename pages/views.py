@@ -38,6 +38,18 @@ def place(request, place_id):
     return render(request, 'pages/place.html', context_dict)
 
 
+def building(request, building_id):
+    context = {}
+
+    # Building.
+    building = get_object_or_404(Building, pk=building_id)
+    context['building'] = building
+
+    # Characters that belong to this building.
+
+    return render(request, 'pages/building.html', context)
+
+
 def register(request):
     registered = False
 

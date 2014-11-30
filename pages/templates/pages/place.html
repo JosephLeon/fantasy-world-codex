@@ -17,7 +17,7 @@
     <h2>Buildings</h2>
     <ul>
       {% for building in buildings %}
-        <li><a href="{# {% url 'pages:building' building.id %} #}" title="">{{ building.name }}</a></li>
+        <li><a href="{% url 'pages:building' building.id %}" title="">{{ building.name }}</a></li>
       {% endfor %}
     </ul>
   {% endif %}
