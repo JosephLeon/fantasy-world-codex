@@ -1,3 +1,10 @@
 {% if places %}
-  <p>TEST</p>
+  <h3>Other places in {{ this_object.region }}</h3>
+  <ul>
+    {% for place in places %}
+      {% if this_object.region == place.region %}
+        <li><a href="{% url 'pages:place' place.id %}" title="{{ place }}">{{ place }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
 {% endif %}
