@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from pages.models import Region, Place, Building, Character, Item
-from pages.forms import RegionForm, PlaceForm
+from pages.forms import RegionForm, PlaceForm, CharacterForm
 from pages.forms import UserForm
 
 
@@ -102,3 +102,17 @@ def add_place(request):
         form = PlaceForm()
 
     return render(request, 'pages/add_place.html', {'form': form})
+
+
+def add_character(request):
+    if request.method == 'POST':
+        form = CharacterForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            return index(request)
+        else:
+            print form.errors
+    else:
+        form = CharacterForm()
+
+    return render(request, 'pages/add_character.html', {'form': form})
