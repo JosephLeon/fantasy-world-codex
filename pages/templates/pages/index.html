@@ -24,7 +24,7 @@
                           <ul>
                             {% for character in character_list %}
                               {% if character.building == building %}
-                                <li>{{ character.name }}</li>
+                                <li><a href="{% url 'pages:character' character.id %}">{{ character.name }}</a></li>
                               {% endif %}
                             {% endfor %}
                           </ul>
@@ -35,7 +35,7 @@
                   <ul>
                     {% for character in character_list %}
                       {% if character.place == place and character.building == NULL %}
-                        <li>{{ character.name }}</li>
+                        <li><a href="{% url 'pages:character' character.id %}">{{ character.name }}</a></li>
                       {% endif %}
                     {% endfor %}
                   </ul>

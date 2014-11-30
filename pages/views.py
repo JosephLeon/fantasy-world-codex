@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from pages.models import Region, Place, Building, Character
+from pages.models import Region, Place, Building, Character, Item
 from pages.forms import RegionForm, PlaceForm
 from pages.forms import UserForm
 

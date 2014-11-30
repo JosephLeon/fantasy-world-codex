@@ -50,6 +50,7 @@
                 <li><a href="{% url 'pages:add_region' %}">Add a New Region</a></li>
                 <li><a href="{% url 'pages:add_place' %}">Add a New Place</a></li>
                 <li><a href="#" title="">Add a New Building</a></li>
+                <li><a href="#" title="">Add a New Character</a></li>
             </ul>
           </li>
           <li><a href="{% url 'auth_logout' %}?next=/pages/">Logout</a></li>
@@ -76,6 +77,9 @@
           {% endif %}
           {% if building.id %}
             {% get_other_buildings_list building.id %}
+          {% endif %}
+          {% if character.id %}
+            {% get_other_characters_list character.id %}
           {% endif %}
         {% endblock %}
       </aside>

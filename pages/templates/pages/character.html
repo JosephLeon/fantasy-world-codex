@@ -3,5 +3,31 @@
 {% load staticfiles %}
 
 {% block base_body %}
-  <h1>Character</h1>
+  <h1>{{ character }}</h1>
+
+  <p>region: {{ character.region }}</p>
+  <p>place: {{ character.place }}</p>
+  <p>building: {{ character.building }}</p>
+  <p>name: {{ character.name }}</p>
+  <p>race: {{ character.race }}</p>
+  <p>strength: {{ character.strength }}</p>
+  <p>stamina: {{ character.stamina }}</p>
+  <p>speed: {{ character.speed }}</p>
+  <p>agility: {{ character.agility }}</p>
+  <p>toughness: {{ character.toughness }}</p>
+  <p>constitution: {{ character.constitution }}</p>
+  <p>intelligence: {{ character.intelligence }}</p>
+  <p>logic: {{ character.logic }}</p>
+  <p>teaching: {{ character.teaching }}</p>
+  <p>intuition: {{ character.intuition }}</p>
+  <p>beauty: {{ character.beauty }}</p>
+  <p>charisma: {{ character.charisma }}</p>
+  <p>leadership: {{ character.leadership }}</p>
+  <p>character_class: {{ character.character_class }}</p>
+  <p>height: {{ character.height }}</p>
+  <p>weight: {{ character.weight }}</p>
+  <p>color: {{ character.color }}</p>
+  <p>description: {{ character.description }}</p>
+  <p>gold: {{ character.gold }}</p>
+
 {% endblock base_body %}

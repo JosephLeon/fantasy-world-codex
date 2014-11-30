@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django import template
-from pages.models import Place, Region, Building, Character
+from pages.models import Place, Region, Building, Character, Item
 
 register = template.Library()
 
@@ -28,5 +28,16 @@ def get_other_buildings_list(building_id):
     buildings = Building.objects.all()
     context_dict['buildings'] = buildings
     this_object = get_object_or_404(Building, pk=building_id)
+    context_dict['this_object'] = this_object
+    return context_dict
+
+
+@register.inclusion_tag('pages/other_characters.html')
+def get_other_characters_list(character_id):
+    context_dict = {}
+
+    characters = Character.objects.all()
+    context_dict['characters'] = characters
+    this_object = get_object_or_404(Character, pk=character_id)
     context_dict['this_object'] = this_object
     return context_dict

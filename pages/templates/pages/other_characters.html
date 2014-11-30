@@ -1,0 +1,19 @@
+{% if characters %}
+  <p>{{ this_object.name }} belongs to the building {{ this_object.building }}. Here are other characters in {{ this_object.building }}</p>
+  <ul>
+    {% for character in characters %}
+      {% if this_object.building == character.building and character.name != this_object.name %}
+        <li>{{ character }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <p>{{ this_object.name }} belongs to the region {{ this_object.region }}. Here are other characters in {{ this_object.region }}</p>
+  <ul>
+    {% for character in characters %}
+      {% if this_object.region == character.region %}
+        <li>{{ character }}</li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}
