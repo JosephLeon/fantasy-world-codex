@@ -70,7 +70,9 @@
     <div class="large-3 pull-9 columns">
       <aside>
         {% block side_body %}
-          {% get_other_places_list %}
+          {% if place.id %}
+            {% get_other_places_list place.id %}
+          {% endif %}
         {% endblock %}
       </aside>
     </div>
