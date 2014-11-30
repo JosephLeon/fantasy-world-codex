@@ -13,7 +13,33 @@
           <ul>
             {% for place in place_list %}
               {% if place.region == region %}
-                <li><a href="{% url 'pages:place' place.id %}" title="">{{ place.name }}</a></li>
+                <li><a href="{% url 'pages:place' place.id %}" title="">{{ place.name }}</a>
+                  {% if building.place == place %}
+                  <p>Buildings</p>
+                  {% endif %}
+                  <ul>
+                    {% for building in building_list %}
+                      {% if building.place == place %}
+                        <li>{{ building.name }}
+                          <ul>
+                            {% for character in character_list %}
+                              {% if character.building == building %}
+                                <li>{{ character.name }}</li>
+                              {% endif %}
+                            {% endfor %}
+                          </ul>
+                        </li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                  <ul>
+                    {% for character in character_list %}
+                      {% if character.place == place and character.building == NULL %}
+                        <li>{{ character.name }}</li>
+                      {% endif %}
+                    {% endfor %}
+                  </ul>
+                </li>
               {% endif %}
             {% endfor %}
           </ul>

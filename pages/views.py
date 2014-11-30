@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from pages.models import Region, Place
+from pages.models import Region, Place, Building, Character
 from pages.forms import RegionForm, PlaceForm
 from pages.forms import UserForm
 
@@ -10,6 +10,10 @@ def index(request):
     context['region_list'] = region_list
     place_list = Place.objects.all()
     context['place_list'] = place_list
+    building_list = Building.objects.all()
+    context['building_list'] = building_list
+    character_list = Character.objects.all()
+    context['character_list'] = character_list
     return render(request, 'pages/index.html', context)
 
 
