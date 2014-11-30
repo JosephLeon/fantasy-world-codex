@@ -44,6 +44,8 @@
       <!-- Right Nav Section -->
       <ul class="right">
         {% if user.is_authenticated %}
+          <li><a href="#" title="Bestiary">Bestiary</a></li>
+          <li><a href="#" title="Armory">Armory</a></li>
           <li class="has-dropdown">
             <a href="#">Add</a>
             <ul class="dropdown">
@@ -51,6 +53,7 @@
                 <li><a href="{% url 'pages:add_place' %}">New Place</a></li>
                 <li><a href="#" title="">New Building</a></li>
                 <li><a href="#" title="">New Character</a></li>
+                <li><a href="#" title="">New Item</a></li>
             </ul>
           </li>
           <li><a href="{% url 'auth_logout' %}?next=/pages/">Logout</a></li>
