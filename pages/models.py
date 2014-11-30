@@ -129,8 +129,33 @@ class Character(models.Model):
 class Item(models.Model):
     place = models.ForeignKey(Place, blank=True, null=True)
     building = models.ForeignKey(Building, blank=True, null=True)
-    character = models.ForeignKey(Character)
-    item_name = models.CharField(max_length=200)
+    character = models.ForeignKey(Character, blank=True, null=True)
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    size = models.CharField(max_length=200)
+    effects = models.TextField(blank=True)
+
+    ITEM_TYPE = (
+        ('Ring', 'Ring'),
+        ('Staff', 'Staff'),
+        ('Weapon', 'Weapon'),
+        ('Hat', 'Hat'),
+        ('Necklace', 'Necklace'),
+        ('Earring', 'Earring'),
+        ('Shirt', 'Shirt'),
+        ('Cloak', 'Cloak'),
+        ('Belt', 'Belt'),
+        ('Pants', 'Pants'),
+        ('Gloves', 'Gloves'),
+        ('Boots', 'Boots'),
+        ('Miscellaneous', 'Miscellaneous'),
+    )
+
+    item_type = models.CharField(
+        max_length=255,
+        choices=ITEM_TYPE,
+        default='Ring',
+    )
 
     def __str__(self):
-        return self.item_name
+        return self.name
