@@ -1,0 +1,10 @@
+{% if buildings %}
+  <p>{{ this_object.name }} belongs to the place {{ this_object.place }}. Here are other buildings in {{ this_object.place }}</p>
+  <ul>
+    {% for building in buildings %}
+      {% if this_object.place == building.place and building.name != this_object.name %}
+        <li><a href="{% url 'pages:building' building.id %}" title="{{ building }}">{{ building }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+{% endif %}

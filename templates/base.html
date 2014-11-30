@@ -73,6 +73,9 @@
           {% if place.id %}
             {% get_other_places_list place.id %}
           {% endif %}
+          {% if building.id %}
+            {% get_other_buildings_list building.id %}
+          {% endif %}
         {% endblock %}
       </aside>
     </div>
