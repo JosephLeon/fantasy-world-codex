@@ -13,7 +13,7 @@
   <h2>Characters</h2>
   {% if characters %}
     {% for character in characters %}
-      <li><a href="" title="{{ character.name }}">{{ character.name }}</a></li>
+      <li><a href="{% url 'pages:character' character.id %}" title="{{ character.name }}">{{ character.name }}</a></li>
     {% endfor %}
   {% endif %}
 {% endblock base_body %}

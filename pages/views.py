@@ -52,6 +52,16 @@ def building(request, building_id):
     return render(request, 'pages/building.html', context)
 
 
+def character(request, character_id):
+    context = {}
+
+    # Character.
+    character = get_object_or_404(Character, pk=character_id)
+    context['character'] = character
+
+    return render(request, 'pages/character.html', context)
+
+
 def register(request):
     registered = False
 
