@@ -3,5 +3,17 @@
 {% load staticfiles %}
 
 {% block base_body %}
-  <h1>Building name</h1>
+  <h1>{{ building.name }}</h1>
+
+  <p>Belongs to: <a href="{% url 'pages:place' building.place.id %}" title="{{ building.place }}">{{ building.place }}</a></p>
+  <p>Description: {{ building.description }}</p>
+  <p>Contents: {{ building.contents }}</p>
+  <p>Notes: {{ building.notes }}</p>
+
+  <h2>Characters</h2>
+  {% if characters %}
+    {% for character in characters %}
+      <li><a href="" title="{{ character.name }}">{{ character.name }}</a></li>
+    {% endfor %}
+  {% endif %}
 {% endblock base_body %}

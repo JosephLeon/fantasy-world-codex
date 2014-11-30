@@ -46,6 +46,8 @@ def building(request, building_id):
     context['building'] = building
 
     # Characters that belong to this building.
+    characters = Character.objects.filter(building=building_id)
+    context['characters'] = characters
 
     return render(request, 'pages/building.html', context)
 
