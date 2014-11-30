@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^places/(?P<place_id>\d+)/$', views.place, name='place'),
     url(r'^buildings/(?P<building_id>\d+)/$', views.building, name='building'),
     url(r'^characters/(?P<character_id>\d+)/$', views.character, name='character'),
+    url(r'^items/(?P<item_id>\d+)/$', views.item, name='item'),
 )
