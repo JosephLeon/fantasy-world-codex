@@ -62,27 +62,14 @@ def character(request, character_id):
     return render(request, 'pages/character.html', context)
 
 
-# def register(request):
-#     registered = False
+def item(request, item_id):
+    context_dict = {}
 
-#     if request.method == 'POST':
-#         user_form = UserForm(data=request.POST)
-#         if user_form.is_valid:
-#             user = user_form.save()
-#             user.set_password(user.password)
-#             user.save()
-#             # profile.save()
-#             registered = True
-#         else:
-#             print user_form.errors
-#     else:
-#         user_form = UserForm()
+    # Item.
+    item = get_object_or_404(Item, pk=item_id)
+    context_dict['item'] = item
 
-#     return render(
-#         request,
-#         'pages/registration.html',
-#         {'user_form': user_form, 'registered': registered}
-#     )
+    return render(request, 'pages/item.html', context_dict)
 
 
 def add_region(request):
