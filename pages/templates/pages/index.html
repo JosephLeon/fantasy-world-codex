@@ -8,7 +8,16 @@
   {% if region_list %}
     <ul>
     {% for region in region_list %}
-        <li><a href="{% url 'pages:region' region.id %}">{{ region.name }}</a></li>
+        <li>
+          <a href="{% url 'pages:region' region.id %}">{{ region.name }}</a>
+          <ul>
+            {% for place in place_list %}
+              {% if place.region == region %}
+                <li><a href="{% url 'pages:place' place.id %}" title="">{{ place.name }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
     {% endfor %}
     </ul>
   {% else %}

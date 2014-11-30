@@ -5,8 +5,11 @@ from pages.forms import UserForm
 
 
 def index(request):
+    context = {}
     region_list = Region.objects.all()
-    context = {'region_list': region_list}
+    context['region_list'] = region_list
+    place_list = Place.objects.all()
+    context['place_list'] = place_list
     return render(request, 'pages/index.html', context)
 
 
