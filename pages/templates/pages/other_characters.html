@@ -1,18 +1,19 @@
+<h3>Related Characters</h3>
 {% if characters %}
-  <p>{{ this_object.name }} belongs to the building {{ this_object.building }}. Here are other characters in {{ this_object.building }}</p>
+  <p>{{ this_object.name }} belongs to the building <a href="{% url 'pages:building' this_object.building.id %}" title="{{ this_object.building }}">{{ this_object.building }}</a>. Here are other characters in {{ this_object.building }}</p>
   <ul>
     {% for character in characters %}
       {% if this_object.building == character.building and character.name != this_object.name %}
-        <li>{{ character }}</li>
+        <li><a href="{% url 'pages:character' character.id %}" title="{{ character }}">{{ character }}</a></li>
       {% endif %}
     {% endfor %}
   </ul>
 
-  <p>{{ this_object.name }} belongs to the region {{ this_object.region }}. Here are other characters in {{ this_object.region }}</p>
+  <p>{{ this_object.name }} belongs to the region <a href="{% url 'pages:region' this_object.region.id %}" title="{{ this_object.region }}">{{ this_object.region }}</a>. Here are other characters in {{ this_object.region }}</p>
   <ul>
     {% for character in characters %}
-      {% if this_object.region == character.region %}
-        <li>{{ character }}</li>
+      {% if this_object.region == character.region and character.name != this_object.name %}
+        <li><a href="{% url 'pages:character' character.id %}" title="{{ character }}">{{ character }}</a></li>
       {% endif %}
     {% endfor %}
   </ul>

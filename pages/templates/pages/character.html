@@ -5,25 +5,58 @@
 {% block base_body %}
   <h1>{{ character }}</h1>
 
-  <p>region: {{ character.region }}</p>
-  <p>place: {{ character.place }}</p>
-  <p>building: {{ character.building }}</p>
-  <p>name: {{ character.name }}</p>
-  <p>race: {{ character.race }}</p>
-  <p>strength: {{ character.strength }}</p>
-  <p>stamina: {{ character.stamina }}</p>
-  <p>speed: {{ character.speed }}</p>
-  <p>agility: {{ character.agility }}</p>
-  <p>toughness: {{ character.toughness }}</p>
-  <p>constitution: {{ character.constitution }}</p>
-  <p>intelligence: {{ character.intelligence }}</p>
-  <p>logic: {{ character.logic }}</p>
-  <p>teaching: {{ character.teaching }}</p>
-  <p>intuition: {{ character.intuition }}</p>
-  <p>beauty: {{ character.beauty }}</p>
-  <p>charisma: {{ character.charisma }}</p>
-  <p>leadership: {{ character.leadership }}</p>
-  <p>character_class: {{ character.character_class }}</p>
+  <div class="row">
+    <div class="small-6 medium-6 large-6 column">
+      <p><b>Class:</b> {{ character.character_class }}</p>
+      <p><b>Race:</b> {{ character.race }}</p>
+    </div>
+    <div class="small-6 medium-6 large-6 column">
+      {% if character.region %}
+        <p><b>Region:</b> <a href="#" title="{{ character.region }}">{{ character.region }}</a></p>
+      {% endif %}
+      {% if character.place %}
+        <p><b>Place:</b> {{ character.place }}</p>
+      {% endif %}
+      {% if character.building %}
+        <p><b>Building:</b> {{ character.building }}</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <h2>Stats</h2>
+  <div class="row">
+    <div class="small-6 medium-6 large-6 column">
+      <p>Strength: {{ character.strength }}</p>
+      <p>Stamina: {{ character.stamina }}</p>
+      <p>Speed: {{ character.speed }}</p>
+      <p>Agility: {{ character.agility }}</p>
+      <p>Toughness: {{ character.toughness }}</p>
+      <p>Constitution: {{ character.constitution }}</p>
+      <p>Beauty: {{ character.beauty }}</p>
+    </div>
+    <div class="small-6 medium-6 large-6 column">
+      <p>Intelligence: {{ character.intelligence }}</p>
+      <p>Logic: {{ character.logic }}</p>
+      <p>Teaching: {{ character.teaching }}</p>
+      <p>Intuition: {{ character.intuition }}</p>
+      <p>Charisma: {{ character.charisma }}</p>
+      <p>Leadership: {{ character.leadership }}</p>
+    </div>
+  </div>
+
+  <h2>Combat</h2>
+  <div class="row">
+    <div class="small-6 medium-6 large-6 column">
+      <p>Attack</p>
+      <p>Defense</p>
+    </div>
+    <div class="small-6 medium-6 large-6 column">
+      <p>Damage</p>
+      <p>Resistance</p>
+    </div>
+  </div>
+
+  <h2>Appearance</h2>
   <p>height: {{ character.height }}</p>
   <p>weight: {{ character.weight }}</p>
   <p>color: {{ character.color }}</p>
