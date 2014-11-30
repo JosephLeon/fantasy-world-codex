@@ -1,3 +1,4 @@
+{% load fwc_extras %}
 <!DOCTYPE html>
 {% load staticfiles %}
 <!doctype html>
@@ -59,9 +60,22 @@
     </section>
   </nav>
   {# Main content goes here #}
-  <article>
-    {% block base_body %}{% endblock base_body %}
-  </article>
+  <div class="row">
+    <div class="large-9 push-3 columns">
+      <article>
+        {% block base_body %}{% endblock base_body %}
+      </article>
+    </div>
+
+    <div class="large-3 pull-9 columns">
+      <aside>
+        {% block side_body %}
+          {% get_other_places_list %}
+        {% endblock %}
+      </aside>
+    </div>
+  </div>
+
 
   {# Override if you need another version of jQuery #}
   {% block foundation_jquery %}
