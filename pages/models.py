@@ -25,7 +25,10 @@ class Place(models.Model):
 class Building(models.Model):
     region = models.ForeignKey(Region)
     place = models.ForeignKey(Place, blank=True, null=True)
-    place_name = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    contents = models.TextField(blank=True)
+    notes = models.TextField(blank=True)
 
     def __str__(self):
         return self.place_name
