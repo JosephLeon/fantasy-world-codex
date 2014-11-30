@@ -79,6 +79,48 @@ class Character(models.Model):
     charisma = models.IntegerField(default=12)
     leadership = models.IntegerField(default=12)
 
+    # class
+    CLASSES = (
+        ('Fighter', 'Fighter'),
+        ('Thief', 'Thief'),
+        ('Survivalist', 'Survivalist'),
+        ('Cleric', 'Cleric'),
+        ('Mage', 'Mage'),
+        ('Mentalist', 'Mentalist'),
+        ('Fighter/Thief', 'Fighter/Thief'),
+        ('Fighter/Survivalist', 'Fighter/Survivalist'),
+        ('Fighter/Cleric', 'Fighter/Cleric'),
+        ('Fighter/Mage', 'Fighter/Mage'),
+        ('Fighter/Mentalist', 'Fighter/Mentalist'),
+        ('Thief/Survivalist', 'Thief/Survivalist'),
+        ('Thief/Cleric', 'Thief/Cleric'),
+        ('Thief/Mage', 'Thief/Mage'),
+        ('Thief/Mentalist', 'Thief/Mentalist'),
+        ('Survivalist/Cleric', 'Survivalist/Cleric'),
+        ('Survivalist/Mage', 'Survivalist/Mage'),
+        ('Survivalist/Mentalist', 'Survivalist/Mentalist'),
+        ('Cleric/Mage', 'Cleric/Mage'),
+        ('Cleric/Mentalist', 'Cleric/Mentalist'),
+        ('Mage/Mentalist', 'Mage/Mentalist'),
+    )
+
+    character_class = models.CharField(
+        max_length=255,
+        choices=CLASSES,
+        default='Fighter',
+    )
+
+    # skills
+    skills = models.TextField(blank=True)
+
+    # appearance
+    height = models.CharField(max_length=50)
+    weight = models.CharField(max_length=50)
+    color = models.CharField(max_length=50)
+    description = models.TextField(blank=True)
+
+    # wealth
+    gold = models.IntegerField(default=1)
 
     def __str__(self):
         return self.name
