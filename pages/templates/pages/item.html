@@ -3,5 +3,14 @@
 {% load staticfiles %}
 
 {% block base_body %}
-  <h1>Item</h1>
+  <h1>{{ item.name }}</h1>
+
+  <p>Place: <a href="{% url 'pages:place' item.place.id %}" title="{{ item.place }}">{{ item.place }}</a></p>
+  <p>Building: {{ item.building }}</p>
+  <p>Character: {{ item.character }}</p>
+
+  <p>Type: {{ item.item_type }}</p>
+  <p>Description: {{ item.description }}</p>
+  <p>Size: {{ item.size }}</p>
+  <p>Effects: {{ item.effects }}</p>
 {% endblock base_body %}
