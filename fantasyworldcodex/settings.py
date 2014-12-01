@@ -41,7 +41,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'registration',
     'foundation',
-    'crispy_forms',
+    'floppyforms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,4 +109,4 @@ LOGIN_REDIRECT_URL = '/pages/'
 LOGIN_URL = '/accounts/login/'
 
 # Crispy Form settings
-CRISPY_TEMPLATE_PACK = 'foundation'
+# CRISPY_TEMPLATE_PACK = 'foundation'
