@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from pages.models import Region, Place, Character
+from pages.models import Region, Place, Building, Character
 
 
 class RegionForm(forms.ModelForm):
@@ -26,52 +26,52 @@ class PlaceForm(forms.ModelForm):
 
 
 class CharacterForm(forms.ModelForm):
-    # region = forms.ForeignKey(Region, blank=True, null=True)
-    # place = forms.ForeignKey(Place, blank=True, null=True)
-    # building = forms.ForeignKey(Building, blank=True, null=True)
     region_list = Region.objects.all()
-    name = forms.CharField(max_length=200)
-    region = forms.ModelChoiceField(queryset=region_list, empty_label="None")
+    place_list = Place.objects.all()
+    building_list = Building.objects.all()
+    name = forms.CharField(max_length=200, help_text='Name:')
+    region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
+    place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
+    building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')
 
-    # # race
-    # RACES = (
-    #     ('Human', 'Human'),
-    #     ('Dwarf', 'Dwarf'),
-    #     ('Elf', 'Elf'),
-    #     ('Halfling', 'Halfling'),
-    #     ('Human/Dwarf', 'Human/Dwarf'),
-    #     ('Human/Elf', 'Human/Elf'),
-    #     ('Human/Halfling', 'Human/Halfling'),
-    #     ('Dwarf/Elf', 'Dwarf/Elf'),
-    #     ('Dwarf/Halfling', 'Dwarf/Halfling'),
-    #     ('Elf/Halfling', 'Elf/Halfling'),
-    #     ('Gunder', 'Gunder'),
-    #     ('Orc', 'Orc'),
-    #     ('Goblin', 'Goblin'),
-    #     ('Human/Orc', 'Human/Orc'),
-    #     ('Dwarf/Orc', 'Dwarf/Orc'),
-    #     ('Elf/Orc', 'Elf/Orc'),
-    # )
-    # race = forms.CharField(
-    #     max_length=255,
-    #     choices=RACES,
-    #     default='Human',
-    # )
+    # race
+    RACES = (
+        ('Human', 'Human'),
+        ('Dwarf', 'Dwarf'),
+        ('Elf', 'Elf'),
+        ('Halfling', 'Halfling'),
+        ('Human/Dwarf', 'Human/Dwarf'),
+        ('Human/Elf', 'Human/Elf'),
+        ('Human/Halfling', 'Human/Halfling'),
+        ('Dwarf/Elf', 'Dwarf/Elf'),
+        ('Dwarf/Halfling', 'Dwarf/Halfling'),
+        ('Elf/Halfling', 'Elf/Halfling'),
+        ('Gunder', 'Gunder'),
+        ('Orc', 'Orc'),
+        ('Goblin', 'Goblin'),
+        ('Human/Orc', 'Human/Orc'),
+        ('Dwarf/Orc', 'Dwarf/Orc'),
+        ('Elf/Orc', 'Elf/Orc'),
+    )
+    race = forms.ChoiceField(
+        choices=RACES,
+        help_text='Race',
+    )
 
-    # # stats
-    # strength = forms.IntegerField(default=12)
-    # stamina = forms.IntegerField(default=12)
-    # speed = forms.IntegerField(default=12)
-    # agility = forms.IntegerField(default=12)
-    # toughness = forms.IntegerField(default=12)
-    # constitution = forms.IntegerField(default=12)
-    # intelligence = forms.IntegerField(default=12)
-    # logic = forms.IntegerField(default=12)
-    # teaching = forms.IntegerField(default=12)
-    # intuition = forms.IntegerField(default=12)
-    # beauty = forms.IntegerField(default=12)
-    # charisma = forms.IntegerField(default=12)
-    # leadership = forms.IntegerField(default=12)
+    # stats
+    strength = forms.IntegerField(help_text='strength', initial=9)
+    stamina = forms.IntegerField(help_text='stamina', initial=9)
+    speed = forms.IntegerField(help_text='speed', initial=9)
+    agility = forms.IntegerField(help_text='agility', initial=9)
+    toughness = forms.IntegerField(help_text='toughness', initial=9)
+    constitution = forms.IntegerField(help_text='constitution', initial=9)
+    intelligence = forms.IntegerField(help_text='intelligence', initial=9)
+    logic = forms.IntegerField(help_text='logic', initial=9)
+    teaching = forms.IntegerField(help_text='teaching', initial=9)
+    intuition = forms.IntegerField(help_text='intuition', initial=9)
+    beauty = forms.IntegerField(help_text='beauty', initial=9)
+    charisma = forms.IntegerField(help_text='charisma', initial=9)
+    leadership = forms.IntegerField(help_text='leadership', initial=9)
 
     # # class
     # CLASSES = (
@@ -117,7 +117,10 @@ class CharacterForm(forms.ModelForm):
 
     class Meta:
         model = Character
-        fields = ('name', 'region')
+        fields = (
+            'name', 'region', 'place', 'building', 'race',
+            'strength', 'stamina', 'speed', 'agility', 'toughness', 'constitution', 'intelligence', 'logic', 'teaching', 'intuition', 'beauty', 'charisma'
+        )
 
 
 class UserForm(forms.ModelForm):

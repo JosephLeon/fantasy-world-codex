@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block base_body %}
+  <h1>Add Character</h1>
+
+  <form id="character_form" action="/pages/add_character" method="post" accept-charset="utf-8">
+    {% csrf_token %}
+    {% for hidden in hidden.fields %}
+      {{ hidden }}
+    {% endfor %}
+
+    {% for field in form.visible_fields %}
+        {{ field.errors }}
+        {{ field.help_text }}
+        {{ field }}
+    {% endfor %}
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Add Character</button>
+
+  </form>
+{% endblock base_body %}
