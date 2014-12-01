@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'registration',
     'foundation',
+    'crispy_forms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -106,3 +107,6 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/pages/'
 LOGIN_URL = '/accounts/login/'
+
+# Crispy Form settings
+CRISPY_TEMPLATE_PACK = 'foundation'

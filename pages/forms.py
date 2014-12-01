@@ -1,6 +1,8 @@
 from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 
 class RegionForm(forms.ModelForm):
@@ -24,8 +26,10 @@ class PlaceForm(forms.ModelForm):
         model = Place
         fields = ('name', 'population', 'description', 'economy', 'special_features')
 
+# class CharacterForm(forms.ModelForm):
 
-class CharacterForm(forms.ModelForm):
+
+class CharacterForm(forms.Form):
     region_list = Region.objects.all()
     place_list = Place.objects.all()
     building_list = Building.objects.all()
@@ -121,6 +125,18 @@ class CharacterForm(forms.ModelForm):
             'name', 'region', 'place', 'building', 'race',
             'strength', 'stamina', 'speed', 'agility', 'toughness', 'constitution', 'intelligence', 'logic', 'teaching', 'intuition', 'beauty', 'charisma'
         )
+
+    # class CharacterForm(forms.Form):
+
+    def __init__(self, *args, **kwargs):
+        super(CharacterForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_id = 'id-exampleForm'
+        self.helper.form_class = 'blueForms'
+        self.helper.form_method = 'post'
+        self.helper.form_action = 'submit_survey'
+
+        self.helper.add_input(Submit('submit', 'Submit'))
 
 
 class UserForm(forms.ModelForm):

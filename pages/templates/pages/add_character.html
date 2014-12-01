@@ -5,6 +5,14 @@
 {% block base_body %}
   <h1>Add Character</h1>
 
+  {# {% load crispy_forms_tags %} #}
+
+  {# {% crispy CharacterForm CharacterForm.helper %} #}
+
+  {# {% crispy form %} #}
+
+  {# {% crispy %} #}
+
   <form id="character_form" action="/pages/add_character" method="post" accept-charset="utf-8">
     {% csrf_token %}
     {% for hidden in hidden.fields %}
