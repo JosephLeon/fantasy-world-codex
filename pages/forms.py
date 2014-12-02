@@ -37,9 +37,12 @@ class CharacterForm(forms.ModelForm):
             }
         ),
     )
-    region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
-    place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
-    building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')
+    # region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
+    region = forms.ModelChoiceField(Region.objects, widget=forms.Select, empty_label="-- Regions --")
+    # place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
+    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+    # building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')
+    building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
     RACES = (
