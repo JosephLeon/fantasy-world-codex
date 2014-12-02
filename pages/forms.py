@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+# from crispy_forms.helper import FormHelper
+# from crispy_forms.layout import Submit
+import floppyforms as forms
 
 
 class RegionForm(forms.ModelForm):
@@ -31,7 +32,12 @@ class CharacterForm(forms.ModelForm):
     region_list = Region.objects.all()
     place_list = Place.objects.all()
     building_list = Building.objects.all()
-    name = forms.CharField(max_length=200, help_text='Name:')
+    name = forms.CharField(
+        max_length=200,
+        widget=forms.TextInput(attrs={'placeholder': 'Name'}),
+        # help_text='Name:',
+        # placeholder='Name',
+    )
     region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
     place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
     building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')

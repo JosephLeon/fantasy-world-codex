@@ -15,6 +15,13 @@
   {# {% crispy %} #}
 
   <form id="character_form" action="/pages/add_character" method="post" accept-charset="utf-8">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Add Character</button>
+  </form>
+
+
+  <form id="character_form" action="/pages/add_character" method="post" accept-charset="utf-8">
     {% csrf_token %}
     {% for hidden in hidden.fields %}
       {{ hidden }}
