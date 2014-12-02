@@ -28,7 +28,10 @@
     {% endblock foundation_modernizer %}
 
     {# Custom head JS #}
-    {% block head_js %}{% endblock head_js %}
+    {% block head_js %}
+      <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+      <script src="{% static "js/fwc.js" %}"></script>
+    {% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %}>
   <nav class="top-bar" data-topbar role="navigation">
