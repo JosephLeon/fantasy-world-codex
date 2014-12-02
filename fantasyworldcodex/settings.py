@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'registration',
     'foundation',
+    'clever_selects',
 )
 
 MIDDLEWARE_CLASSES = (
