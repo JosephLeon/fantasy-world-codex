@@ -1,4 +1,5 @@
 {% load fwc_extras %}
+{% load clever_selects_extras %}
 <!DOCTYPE html>
 {% load staticfiles %}
 <!doctype html>
@@ -104,7 +105,9 @@
   {% endblock foundation_js %}
 
   {# Custom JS #}
-  {% block body_js %}{% endblock body_js %}
+  {% block body_js %}
+    {% clever_selects_js_import %}
+  {% endblock body_js %}
 
   {# Init Foundation #}
   {% block foundation_js_init %}
