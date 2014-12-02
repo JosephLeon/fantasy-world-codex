@@ -32,11 +32,12 @@ class CharacterForm(ChainedChoicesModelForm):
     # region_list = Region.objects.all()
     # brand = forms.ModelChoiceField(queryset=CarBrand.objects.all(), required=True,
         # empty_label=_(u'Select a car brand'))
-    region_list = forms.ModelChoiceField(
-        queryset=Region.objects.all(),
-        required=True,
-        empty_label=('Select a car brand')
-    )
+    # region_list = forms.ModelChoiceField(
+    #     queryset=Region.objects.all(),
+    #     required=True,
+    #     empty_label=('Select a car brand')
+    # )
+
     place_list = Place.objects.all()
     building_list = Building.objects.all()
     name = forms.CharField(
@@ -47,8 +48,26 @@ class CharacterForm(ChainedChoicesModelForm):
             }
         ),
     )
+
+    region = forms.ModelChoiceField(
+        queryset=Region.objects.all(),
+        required=True,
+        empty_label=('Select a region'),
+    )
+
+    '''
+    Commenting the place below until views and urls are setup
+    '''
+    # place = ChainedChoiceField(
+    #     parent_field='region',
+    #     ajax_url=reverse_lazy('ajax_chained_view')
+    # )
+
+    # Old region select querysets
     # region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
-    region = forms.ModelChoiceField(Region.objects, widget=forms.Select, empty_label="-- Regions --")
+    # region = forms.ModelChoiceField(Region.objects, widget=forms.Select, empty_label="-- Regions --")
+
+    # Old place select query sets.
     # place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
     place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
     # building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')
