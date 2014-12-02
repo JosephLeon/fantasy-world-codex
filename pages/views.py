@@ -1,7 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from pages.models import Region, Place, Building, Character, Item
 from pages.forms import RegionForm, PlaceForm, CharacterForm
-from pages.forms import UserForm
+# from pages.forms import UserForm
+
+from clever_selects.views import ChainedSelectChoicesView
+from django.views.generic.detail import BaseDetailView
+from django.http import HttpResponse
 
 
 def index(request):
@@ -116,3 +120,36 @@ def add_character(request):
         form = CharacterForm()
 
     return render(request, 'pages/add_character.html', {'form': form})
+
+
+# class AjaxChainedCountries(ChainedSelectChoicesView):
+#     def get_choices(self):
+#         choices = []
+#         try:
+#             continent_countries = COUNTRIES[self.parent_value]
+#             for country in continent_countries:
+#                 choices.append((country, country))
+#         except KeyError:
+#             return []
+#         return choices
+class AjaxChainedView(BaseDetailView):
+    """
+    View to handle the ajax request for the field options.
+    """
+
+    def get(self, request, *args, **kwargs):
+        field = request.GET.get('field')
+        parent_value = request.GET.get("parent_value")
+
+        vals_list = []
+        for x in range(1, 6):
+            vals_list.append(x*int(parent_value))
+
+        choices = tuple(zip(vals_list, vals_list))
+
+        response = HttpResponse(
+            json.dumps(choices, cls=DjangoJSONEncoder),
+            mimetype='application/javascript'
+        )
+        add_never_cache_headers(response)
+        return response
