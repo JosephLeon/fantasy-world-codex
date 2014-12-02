@@ -11,6 +11,7 @@
       {{ hidden }}
     {% endfor %}
 
+    {# Basic Info. #}
     <div class="row">
       <div class="small-12 medium-6 large-6 column">
         {{ form.name }}
@@ -19,22 +20,83 @@
         {{ form.character_class }}
       </div>
     </div>
-
     <div class="row">
       <div class="small-12 medium-6 large-6 column">
         {{ form.race }}
       </div>
     </div>
 
-    {{ form.region }}
-    {{ form.place }}
-    {{ form.building }}
+    {# Locations. #}
+    <h3>Location</h3>
+    <div class="row">
+      <div class="small-12 medium-6 large-6 column">
+        {{ form.region }}
+      </div>
+      <div class="small-12 medium-6 large-6 column">
+        {{ form.place }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 medium-6 large-6 column">
+        {{ form.building }}
+      </div>
+    </div>
 
-    {# {% for field in form.visible_fields %} #}
-        {# {{ field.errors }} #}
-        {# {{ field.help_text }} #}
-        {# {{ field }} #}
-    {# {% endfor %} #}
+    {# Stats. #}
+    <h3>Stats</h3>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Strength</label>{{ form.strength }}
+      </div>
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Intelligence</label>{{ form.intelligence }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Stamina</label>{{ form.stamina }}
+      </div>
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Logic</label>{{ form.logic }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Speed</label>{{ form.speed }}
+      </div>
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Teaching</label>{{ form.teaching }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Agility</label>{{ form.agility }}
+      </div>
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Intuition</label>{{ form.intuition }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Toughness</label>{{ form.toughness }}
+      </div>
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Charisma</label>{{ form.charisma }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Constitution</label>{{ form.constitution }}
+      </div>
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Leadership</label>{{ form.leadership }}
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-6 medium-6 large-6 column">
+        <label for="">Beauty</label>{{ form.beauty }}
+      </div>
+    </div>
 
     <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Add Character</button>
 

@@ -83,6 +83,7 @@ class CharacterForm(forms.ModelForm):
 
     # class
     CLASSES = (
+        ('', '-- Class --'),
         ('Fighter', 'Fighter'),
         ('Thief', 'Thief'),
         ('Survivalist', 'Survivalist'),
