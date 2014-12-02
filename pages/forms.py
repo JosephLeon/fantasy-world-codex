@@ -2,6 +2,9 @@ from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
 
+from clever_selects.form_fields import ChainedChoiceField, ChainedModelChoiceField
+from clever_selects.forms import ChainedChoicesForm, ChainedChoicesModelForm
+
 
 class RegionForm(forms.ModelForm):
     name = forms.CharField(max_length=200, help_text="Please enter the region name.")
@@ -25,8 +28,15 @@ class PlaceForm(forms.ModelForm):
         fields = ('name', 'population', 'description', 'economy', 'special_features')
 
 
-class CharacterForm(forms.ModelForm):
-    region_list = Region.objects.all()
+class CharacterForm(ChainedChoicesModelForm):
+    # region_list = Region.objects.all()
+    # brand = forms.ModelChoiceField(queryset=CarBrand.objects.all(), required=True,
+        # empty_label=_(u'Select a car brand'))
+    region_list = forms.ModelChoiceField(
+        queryset=Region.objects.all(),
+        required=True,
+        empty_label=('Select a car brand')
+    )
     place_list = Place.objects.all()
     building_list = Building.objects.all()
     name = forms.CharField(
