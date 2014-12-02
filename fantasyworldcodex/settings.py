@@ -41,7 +41,6 @@ INSTALLED_APPS = (
     'debug_toolbar',
     'registration',
     'foundation',
-    'floppyforms',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -95,7 +94,8 @@ INTERNAL_IPS = ('127.0.0.1',)
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
-# debug_toolbar settings
+
+# Debug_toolbar settings
 
 
 def custom_show_toolbar(request):
@@ -107,6 +107,3 @@ ACCOUNT_ACTIVATION_DAYS = 7
 REGISTRATION_AUTO_LOGIN = True
 LOGIN_REDIRECT_URL = '/pages/'
 LOGIN_URL = '/accounts/login/'
-
-# Crispy Form settings
-# CRISPY_TEMPLATE_PACK = 'foundation'
