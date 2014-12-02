@@ -1,9 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
-# from crispy_forms.helper import FormHelper
-# from crispy_forms.layout import Submit
-import floppyforms as forms
 
 
 class RegionForm(forms.ModelForm):
@@ -34,9 +31,11 @@ class CharacterForm(forms.ModelForm):
     building_list = Building.objects.all()
     name = forms.CharField(
         max_length=200,
-        widget=forms.TextInput(attrs={'placeholder': 'Name'}),
-        # help_text='Name:',
-        # placeholder='Name',
+        widget=forms.TextInput(
+            attrs={
+                'placeholder': 'Name'
+            }
+        ),
     )
     region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
     place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
@@ -44,6 +43,7 @@ class CharacterForm(forms.ModelForm):
 
     # race
     RACES = (
+        ('', '-- Race --'),
         ('Human', 'Human'),
         ('Dwarf', 'Dwarf'),
         ('Elf', 'Elf'),
@@ -81,35 +81,35 @@ class CharacterForm(forms.ModelForm):
     charisma = forms.IntegerField(help_text='charisma', initial=9)
     leadership = forms.IntegerField(help_text='leadership', initial=9)
 
-    # # class
-    # CLASSES = (
-    #     ('Fighter', 'Fighter'),
-    #     ('Thief', 'Thief'),
-    #     ('Survivalist', 'Survivalist'),
-    #     ('Cleric', 'Cleric'),
-    #     ('Mage', 'Mage'),
-    #     ('Mentalist', 'Mentalist'),
-    #     ('Fighter/Thief', 'Fighter/Thief'),
-    #     ('Fighter/Survivalist', 'Fighter/Survivalist'),
-    #     ('Fighter/Cleric', 'Fighter/Cleric'),
-    #     ('Fighter/Mage', 'Fighter/Mage'),
-    #     ('Fighter/Mentalist', 'Fighter/Mentalist'),
-    #     ('Thief/Survivalist', 'Thief/Survivalist'),
-    #     ('Thief/Cleric', 'Thief/Cleric'),
-    #     ('Thief/Mage', 'Thief/Mage'),
-    #     ('Thief/Mentalist', 'Thief/Mentalist'),
-    #     ('Survivalist/Cleric', 'Survivalist/Cleric'),
-    #     ('Survivalist/Mage', 'Survivalist/Mage'),
-    #     ('Survivalist/Mentalist', 'Survivalist/Mentalist'),
-    #     ('Cleric/Mage', 'Cleric/Mage'),
-    #     ('Cleric/Mentalist', 'Cleric/Mentalist'),
-    #     ('Mage/Mentalist', 'Mage/Mentalist'),
-    # )
-    # character_class = forms.CharField(
-    #     max_length=255,
-    #     choices=CLASSES,
-    #     default='Fighter',
-    # )
+    # class
+    CLASSES = (
+        ('Fighter', 'Fighter'),
+        ('Thief', 'Thief'),
+        ('Survivalist', 'Survivalist'),
+        ('Cleric', 'Cleric'),
+        ('Mage', 'Mage'),
+        ('Mentalist', 'Mentalist'),
+        ('Fighter/Thief', 'Fighter/Thief'),
+        ('Fighter/Survivalist', 'Fighter/Survivalist'),
+        ('Fighter/Cleric', 'Fighter/Cleric'),
+        ('Fighter/Mage', 'Fighter/Mage'),
+        ('Fighter/Mentalist', 'Fighter/Mentalist'),
+        ('Thief/Survivalist', 'Thief/Survivalist'),
+        ('Thief/Cleric', 'Thief/Cleric'),
+        ('Thief/Mage', 'Thief/Mage'),
+        ('Thief/Mentalist', 'Thief/Mentalist'),
+        ('Survivalist/Cleric', 'Survivalist/Cleric'),
+        ('Survivalist/Mage', 'Survivalist/Mage'),
+        ('Survivalist/Mentalist', 'Survivalist/Mentalist'),
+        ('Cleric/Mage', 'Cleric/Mage'),
+        ('Cleric/Mentalist', 'Cleric/Mentalist'),
+        ('Mage/Mentalist', 'Mage/Mentalist'),
+    )
+    character_class = forms.ChoiceField(
+        # max_length=255,
+        choices=CLASSES,
+        # default='Fighter',
+    )
 
     # # skills
     # skills = forms.TextField(blank=True)
