@@ -2,6 +2,8 @@ from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
 
+from django.core.urlresolvers import reverse_lazy
+
 from clever_selects.form_fields import ChainedChoiceField, ChainedModelChoiceField
 from clever_selects.forms import ChainedChoicesForm, ChainedChoicesModelForm
 
@@ -58,10 +60,11 @@ class CharacterForm(ChainedChoicesModelForm):
     '''
     Commenting the place below until views and urls are setup
     '''
-    # place = ChainedChoiceField(
-    #     parent_field='region',
-    #     ajax_url=reverse_lazy('ajax_chained_view')
-    # )
+    place = ChainedChoiceField(
+        parent_field='region',
+        ajax_url=reverse_lazy('ajax_chained_place'),
+    )
+    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
 
     # Old region select querysets
     # region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
@@ -69,7 +72,7 @@ class CharacterForm(ChainedChoicesModelForm):
 
     # Old place select query sets.
     # place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
-    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+    # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
     # building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')
     building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
