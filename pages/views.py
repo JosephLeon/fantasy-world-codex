@@ -114,11 +114,18 @@ def add_place(request):
 
 
 def add_character(request):
+
+    characters = Character.objects.all()
+    id_list = {}
+    for character in characters:
+        id_list['biggest_id'] = character.id
+    cid = id_list['biggest_id'] + 1
+
     if request.method == 'POST':
         form = CharacterForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            return HttpResponseRedirect(reverse('pages:character', args=(cid,)))
         else:
             print form.errors
     else:
