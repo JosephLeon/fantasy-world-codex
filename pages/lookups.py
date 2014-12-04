@@ -12,7 +12,9 @@ class PlaceLookup(ModelLookup):
 
     def get_query(self, request, term):
         results = super(PlaceLookup, self).get_query(request, term)
+        print results
         region = request.GET.get('region', '')
+        print region
         if region:
             results = results.filter(region=region)
         return results
