@@ -1,5 +1,7 @@
 {% load fwc_extras %}
-{% load clever_selects_extras %}
+{% load selectable_tags %}
+{% include_jquery_libs %}
+{% include_ui_theme %}
 <!DOCTYPE html>
 {% load staticfiles %}
 <!doctype html>
@@ -97,8 +99,8 @@
   {% block foundation_jquery %}
   {# <script src="{% static "foundation/js/vendor/jquery.js" %}"></script> #}
 
-  <script src="{% static "js/jquery-ui.min.js" %}" type="text/javascript"></script>
-  <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+  {# // <script src="{% static "js/jquery-1.11.1.min.js" %}"></script> #}
+  {# // <script src="{% static "js/jquery-ui.min.js" %}" type="text/javascript"></script> #}
   <script src="{% static "js/fwc.js" %}"></script>
   {% endblock foundation_jquery %}
 
@@ -109,7 +111,7 @@
 
   {# Custom JS #}
   {% block body_js %}
-    {# {% clever_selects_js_import %} #}
+
   {% endblock body_js %}
 
   {# Init Foundation #}
