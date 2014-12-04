@@ -2,6 +2,11 @@ from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
 
+# selectable app import
+import selectable.forms as selectable
+
+from pages.lookups import PlaceLookup
+
 
 class RegionForm(forms.ModelForm):
     name = forms.CharField(max_length=200, help_text="Please enter the region name.")
@@ -38,13 +43,22 @@ class CharacterForm(forms.ModelForm):
         ),
     )
 
+    # Chain select the following three selects
     region = forms.ModelChoiceField(
         queryset=Region.objects.all(),
         required=True,
         empty_label=('Select a region'),
     )
 
-    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+    place = selectable.AutoCompleteSelectField(
+        lookup_class=PlaceLookup,
+        label='Place',
+        required=False,
+        widget=selectable.AutoComboboxSelectWidget
+    )
+
+    # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+
     building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
