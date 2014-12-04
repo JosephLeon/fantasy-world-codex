@@ -60,10 +60,10 @@ class CharacterForm(ChainedChoicesModelForm):
     '''
     Commenting the place below until views and urls are setup
     '''
-    place = ChainedChoiceField(
-        parent_field='region',
-        ajax_url=reverse_lazy('ajax_chained_place'),
-    )
+    # place = ChainedChoiceField(
+    #     parent_field='region',
+    #     ajax_url=reverse_lazy('ajax_chained_place'),
+    # )
     place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
 
     # Old region select querysets

@@ -127,16 +127,31 @@ def add_character(request):
     return render(request, 'pages/add_character.html', {'form': form})
 
 
-class AjaxChainedPlace(ChainedSelectChoicesView):
-    def get_choices(self):
-        choices = []
-        try:
-            continent_countries = COUNTRIES[self.parent_value]
-            for country in continent_countries:
-                choices.append((country, country))
-        except KeyError:
-            return []
-        return choices
+# class AjaxChainedPlace(ChainedSelectChoicesView):
+
+#     def get_choices(self):
+#         regions = {
+#             'Xanadu': [
+#                 'City of Krakzin', 'Sweet Water', 'blaa', 'lskdjflskdf'
+#             ],
+#             'Northern Mountains': [
+#                 'crap', 'sdlfkjsld', '984759384'
+#             ],
+#             'Karjik': [
+#                 'Hi', 'Bye'
+#             ],
+#             'Elthadrun': [
+#                 'Elves'
+#             ],
+#         }
+#         choices = []
+#         try:
+#             continent_countries = regions[self.parent_value]
+#             for country in continent_countries:
+#                 choices.append((country, country))
+#         except KeyError:
+#             return []
+#         return choices
         # COUNTRIES = {
             # CONTINENT_NORTH_AMERICA: [
             #     COUNTRY_ALASKA, COUNTRY_CANADA, COUNTRY_USA, COUNTRY_MEXICO
