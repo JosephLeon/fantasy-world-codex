@@ -2,6 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from pages.models import Region, Place, Building, Character, Item
 from pages.forms import RegionForm, PlaceForm, CharacterForm
 
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
 
 def index(request):
     context = {}
@@ -90,11 +93,12 @@ def add_region(request):
 
 
 def add_place(request):
+    # p = get_object_or_404(Place, pk=place_id)
     if request.method == 'POST':
         form = PlaceForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            # return HttpResponseRedirect(reverse('pages:place', args=(p.id,)))
         else:
             print form.errors
     else:
