@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-# from django.contrib.auth.models import User
-
 from selectable.base import ModelLookup
 from selectable.registry import registry
 

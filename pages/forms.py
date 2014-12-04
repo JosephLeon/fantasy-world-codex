@@ -54,7 +54,7 @@ class CharacterForm(forms.ModelForm):
         lookup_class=PlaceLookup,
         label='Place',
         required=False,
-        widget=selectable.AutoComboboxSelectWidget
+        widget=selectable.AutoComboboxSelectWidget,
     )
 
     # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
