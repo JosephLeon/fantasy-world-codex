@@ -5,7 +5,7 @@ from pages.models import Region, Place, Building, Character
 # selectable app import
 import selectable.forms as selectable
 
-from pages.lookups import PlaceLookup
+from pages.lookups import PlaceLookup, BuildingLookup
 
 
 class RegionForm(forms.ModelForm):
@@ -63,6 +63,14 @@ class CharacterForm(forms.ModelForm):
         widget=selectable.AutoComboboxSelectWidget,
         # widget=selectable.AutoCompleteSelectWidget,
     )
+
+    building = selectable.AutoCompleteSelectField(
+        lookup_class=BuildingLookup,
+        label='Building',
+        required=False,
+        widget=selectable.AutoComboboxSelectWidget,
+        # widget=selectable.AutoCompleteSelectWidget,
+    )
     # place = selectable.AutoCompleteSelectField(
     #     lookup_class=PlaceLookup,
     #     label='Place',
@@ -73,7 +81,7 @@ class CharacterForm(forms.ModelForm):
 
     # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
 
-    building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
+    # building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
     RACES = (
