@@ -20,6 +20,11 @@ class RegionForm(forms.ModelForm):
 
 class PlaceForm(forms.ModelForm):
     name = forms.CharField(max_length=200, help_text="Name:")
+    region = forms.ModelChoiceField(
+        queryset=Region.objects.all(),
+        required=True,
+        empty_label=('Select a region'),
+    )
     population = forms.IntegerField(initial=0, help_text='Population:')
     description = forms.CharField(widget=forms.Textarea, help_text='Description:')
     economy = forms.CharField(widget=forms.Textarea, help_text='Economy:')
@@ -27,7 +32,8 @@ class PlaceForm(forms.ModelForm):
 
     class Meta:
         model = Place
-        fields = ('name', 'population', 'description', 'economy', 'special_features')
+        fields = ('name', 'region', 'population', 'description', 'economy', 'special_features')
+        exclude = ('',)
 
 
 class CharacterForm(forms.ModelForm):
@@ -55,7 +61,15 @@ class CharacterForm(forms.ModelForm):
         label='Place',
         required=False,
         widget=selectable.AutoComboboxSelectWidget,
+        # widget=selectable.AutoCompleteSelectWidget,
     )
+    # place = selectable.AutoCompleteSelectField(
+    #     lookup_class=PlaceLookup,
+    #     label='Place',
+    #     required=False,
+    #     # widget=selectable.AutoCompleteSelectWidget,
+    #     # empty_label=('Select a place'),
+    # )
 
     # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
 

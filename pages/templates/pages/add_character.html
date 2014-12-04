@@ -5,9 +5,9 @@
 {% block base_body %}
   <h1>Add Character</h1>
 
-  <form id="character_form" action="/pages/add_character" method="post" accept-charset="utf-8">
+  <form id="character_form" action="/pages/add_character/" method="post">
     {% csrf_token %}
-    {% for hidden in hidden.fields %}
+    {% for hidden in form.hidden_fields %}
       {{ hidden }}
     {% endfor %}
 
@@ -98,7 +98,7 @@
       </div>
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Submit" />Add Character</button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" value="Create Character" />Add Character</button>
 
   </form>
 {% endblock base_body %}
