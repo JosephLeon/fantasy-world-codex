@@ -9,11 +9,11 @@
     <ul>
     {% for region in region_list %}
         <li>
-          <a href="{% url 'pages:region' region.id %}">{{ region.name }}</a>
+          <h4><a href="{% url 'pages:region' region.id %}">{{ region.name }}</a></h4>
           <ul>
             {% for place in place_list %}
               {% if place.region == region %}
-                <li><a href="{% url 'pages:place' place.id %}" title="">{{ place.name }}</a>
+                <h5><li><a href="{% url 'pages:place' place.id %}" title="">{{ place.name }}</a></h5>
                   {% if building.place == place %}
                   <p>Buildings</p>
                   {% endif %}
