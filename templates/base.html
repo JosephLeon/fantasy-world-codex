@@ -30,8 +30,7 @@
 
     {# Custom head JS #}
     {% block head_js %}
-      <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
-      <script src="{% static "js/fwc.js" %}"></script>
+
     {% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %}>
@@ -96,7 +95,11 @@
 
   {# Override if you need another version of jQuery #}
   {% block foundation_jquery %}
-  <script src="{% static "foundation/js/vendor/jquery.js" %}"></script>
+  {# <script src="{% static "foundation/js/vendor/jquery.js" %}"></script> #}
+
+  <script src="{% static "js/jquery-ui.min.js" %}" type="text/javascript"></script>
+  <script src="{% static "js/jquery-1.11.1.min.js" %}"></script>
+  <script src="{% static "js/fwc.js" %}"></script>
   {% endblock foundation_jquery %}
 
   {# Foundation JS #}
@@ -106,7 +109,7 @@
 
   {# Custom JS #}
   {% block body_js %}
-    {% clever_selects_js_import %}
+    {# {% clever_selects_js_import %} #}
   {% endblock body_js %}
 
   {# Init Foundation #}
