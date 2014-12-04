@@ -2,11 +2,6 @@ from django import forms
 from django.contrib.auth.models import User
 from pages.models import Region, Place, Building, Character
 
-from django.core.urlresolvers import reverse_lazy
-
-from clever_selects.form_fields import ChainedChoiceField, ChainedModelChoiceField
-from clever_selects.forms import ChainedChoicesForm, ChainedChoicesModelForm
-
 
 class RegionForm(forms.ModelForm):
     name = forms.CharField(max_length=200, help_text="Please enter the region name.")
@@ -30,18 +25,10 @@ class PlaceForm(forms.ModelForm):
         fields = ('name', 'population', 'description', 'economy', 'special_features')
 
 
-class CharacterForm(ChainedChoicesModelForm):
-    # region_list = Region.objects.all()
-    # brand = forms.ModelChoiceField(queryset=CarBrand.objects.all(), required=True,
-        # empty_label=_(u'Select a car brand'))
-    # region_list = forms.ModelChoiceField(
-    #     queryset=Region.objects.all(),
-    #     required=True,
-    #     empty_label=('Select a car brand')
-    # )
-
+class CharacterForm(forms.ModelForm):
     place_list = Place.objects.all()
     building_list = Building.objects.all()
+
     name = forms.CharField(
         max_length=200,
         widget=forms.TextInput(
@@ -57,23 +44,7 @@ class CharacterForm(ChainedChoicesModelForm):
         empty_label=('Select a region'),
     )
 
-    '''
-    Commenting the place below until views and urls are setup
-    '''
-    # place = ChainedChoiceField(
-    #     parent_field='region',
-    #     ajax_url=reverse_lazy('ajax_chained_place'),
-    # )
     place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-
-    # Old region select querysets
-    # region = forms.ModelChoiceField(queryset=region_list, empty_label="None", help_text='Region:')
-    # region = forms.ModelChoiceField(Region.objects, widget=forms.Select, empty_label="-- Regions --")
-
-    # Old place select query sets.
-    # place = forms.ModelChoiceField(queryset=place_list, empty_label="None", help_text='Place:')
-    # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-    # building = forms.ModelChoiceField(queryset=building_list, empty_label="None", help_text='Building:')
     building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
