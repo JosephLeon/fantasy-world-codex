@@ -93,12 +93,18 @@ def add_region(request):
 
 
 def add_place(request):
-    # p = get_object_or_404(Place, pk=place_id)
+
+    places = Place.objects.all()
+    id_list = {}
+    for place in places:
+        id_list['biggest_id'] = place.id
+    pid = id_list['biggest_id'] + 1
+
     if request.method == 'POST':
         form = PlaceForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            # return HttpResponseRedirect(reverse('pages:place', args=(p.id,)))
+            return HttpResponseRedirect(reverse('pages:place', args=(pid,)))
         else:
             print form.errors
     else:
