@@ -39,8 +39,11 @@ class BuildingLookup(ModelLookup):
             results = results.filter(place=place)
         return results
 
-    def get_item_label(self, item):
-        return "%s, %s" % (item.name, item.place)
+    # def create_item(self, item):
+        # return "%s, %s" % (item.name, item.place)
+
+    # def get_item_label(self, item):
+    #     return "%s, %s" % (item.name, item.place)
 
 
 registry.register(BuildingLookup)
