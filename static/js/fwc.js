@@ -1,8 +1,13 @@
 (function ($, window, document, undefined) {
 
+  $('#id_place_0').val('Select a place');
+  $('#id_building_0').val('Select a building');
+
   $('#id_region').on('change', function() {
     $('#id_place_0 option:eq(0)').prop("selected", true);
     $('#id_place_0').val('Select a place');
+    $('#id_building_0 option:eq(0)').prop("selected", true);
+    $('#id_building_0').val('Select a building');
     function newParameters(query) {
       query.region = $('#id_region').val();
     }

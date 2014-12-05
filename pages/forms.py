@@ -68,19 +68,13 @@ class CharacterForm(forms.ModelForm):
         lookup_class=BuildingLookup,
         label='Building',
         required=False,
-        widget=selectable.AutoComboboxSelectWidget,
-        # widget=selectable.AutoCompleteSelectWidget,
+        # widget=selectable.AutoComboboxSelectWidget,
+        widget=selectable.AutoCompleteSelectWidget,
+        # widget=forms.Select,
     )
-    # place = selectable.AutoCompleteSelectField(
-    #     lookup_class=PlaceLookup,
-    #     label='Place',
-    #     required=False,
-    #     # widget=selectable.AutoCompleteSelectWidget,
-    #     # empty_label=('Select a place'),
-    # )
 
+    # Old select drop downs.
     # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-
     # building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
