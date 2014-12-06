@@ -32,7 +32,8 @@
 
     {# Custom head JS #}
     {% block head_js %}
-
+      {# // <script src="{% static "js/jquery-1.11.1.min.js" %}"></script> #}
+      {# // <script src="{% static "js/jquery-ui.min.js" %}" type="text/javascript"></script> #}
     {% endblock head_js %}
 </head>
 <body {% block body_attr %}{% endblock body_attr %}>
@@ -99,8 +100,6 @@
   {% block foundation_jquery %}
   {# <script src="{% static "foundation/js/vendor/jquery.js" %}"></script> #}
 
-  {# // <script src="{% static "js/jquery-1.11.1.min.js" %}"></script> #}
-  {# // <script src="{% static "js/jquery-ui.min.js" %}" type="text/javascript"></script> #}
   <script src="{% static "js/jquery.dj.selectable.js" %}" type="text/javascript"></script>
   <script src="{% static "js/fwc.js" %}"></script>
   {% endblock foundation_jquery %}
