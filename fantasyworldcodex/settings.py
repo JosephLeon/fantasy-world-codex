@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'registration',
     'foundation',
     'selectable',
+    'django-smart-selects',
 )
 
 MIDDLEWARE_CLASSES = (
