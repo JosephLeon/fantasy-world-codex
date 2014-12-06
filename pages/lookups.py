@@ -12,15 +12,13 @@ class PlaceLookup(ModelLookup):
 
     def get_query(self, request, term):
         results = super(PlaceLookup, self).get_query(request, term)
-        print results
         region = request.GET.get('region', '')
-        print region
         if region:
             results = results.filter(region=region)
         return results
 
-    def get_item_label(self, item):
-        return "%s, %s" % (item.name, item.region)
+    # def get_item_label(self, item):
+    #     return "%s, %s" % (item.name, item.region)
 
 
 registry.register(PlaceLookup)

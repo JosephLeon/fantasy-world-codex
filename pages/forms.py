@@ -56,26 +56,26 @@ class CharacterForm(forms.ModelForm):
         empty_label=('Select a region'),
     )
 
-    place = selectable.AutoCompleteSelectField(
-        lookup_class=PlaceLookup,
-        label='Place',
-        required=False,
-        widget=selectable.AutoComboboxSelectWidget,
-        # widget=selectable.AutoCompleteSelectWidget,
-    )
+    # place = selectable.AutoCompleteSelectField(
+    #     lookup_class=PlaceLookup,
+    #     label='Place',
+    #     required=False,
+    #     # widget=selectable.AutoComboboxSelectWidget,
+    #     widget=selectable.AutoCompleteSelectWidget,
+    # )
 
-    building = selectable.AutoCompleteSelectField(
-        lookup_class=BuildingLookup,
-        label='Building',
-        required=False,
-        # widget=selectable.AutoComboboxSelectWidget,
-        widget=selectable.AutoCompleteSelectWidget,
-        # widget=forms.Select,
-    )
+    # building = selectable.AutoCompleteSelectField(
+    #     lookup_class=BuildingLookup,
+    #     label='Building',
+    #     required=False,
+    #     # widget=selectable.AutoComboboxSelectWidget,
+    #     widget=selectable.AutoCompleteSelectWidget,
+    #     # widget=forms.Select,
+    # )
 
     # Old select drop downs.
-    # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-    # building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
+    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+    building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
     RACES = (
