@@ -1,4 +1,5 @@
 from django.db import models
+from smart_selects.db_fields import ChainedForeignKey
 
 
 class Region(models.Model):
@@ -34,7 +35,14 @@ class Building(models.Model):
 
 class Character(models.Model):
     region = models.ForeignKey(Region, blank=True, null=True)
-    place = models.ForeignKey(Place, blank=True, null=True)
+    # place = models.ForeignKey(Place, blank=True, null=True)
+    place = ChainedForeignKey(
+        Place,
+        chained_field="region",
+        chained_model_field="region",
+        show_all=False,
+        auto_choose=True
+    )
     building = models.ForeignKey(Building, blank=True, null=True)
     name = models.CharField(max_length=200)
 
