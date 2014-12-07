@@ -11,7 +11,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^pages/', include('pages.urls', namespace='pages')),
     (r'^selectable/', include('selectable.urls')),
-    url(r'^chaining/', include('smart_selects.urls')),
     url(r'^accounts/register/$', MyRegistrationView.as_view(), name='registration_register'),
     (r'^accounts/', include('registration.backends.simple.urls')),
 )
