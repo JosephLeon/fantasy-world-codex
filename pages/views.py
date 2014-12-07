@@ -2,8 +2,9 @@ from django.shortcuts import render, get_object_or_404
 from pages.models import Region, Place, Building, Character, Item
 from pages.forms import RegionForm, PlaceForm, CharacterForm
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.core.urlresolvers import reverse
+from django.core import serializers
 
 
 def index(request):
@@ -132,3 +133,8 @@ def add_character(request):
         form = CharacterForm()
 
     return render(request, 'pages/add_character.html', {'form': form})
+
+
+def feeds_subcat(request, region_id):
+    json_subcat = serializers.serialize("json", Place.objects.filter(prodcat=region_id))
+    return HttpResponse(json_subcat, mimetype="application/javascript")
