@@ -55,6 +55,22 @@ class CharacterForm(forms.ModelForm):
         required=True,
         empty_label=('Select a region'),
     )
+    # Old select drop downs.
+    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+    building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
+
+    topregion = forms.ModelChoiceField(
+        Region.objects,
+        widget=forms.Select,
+        empty_label='parent region',
+    )
+    subplace = forms.ModelChoiceField(
+        Place.objects,
+        widget=forms.Select(
+            attrs={'disabled': 'true'}
+        ),
+        empty_label='parent place',
+    )
 
     # place = selectable.AutoCompleteSelectField(
     #     lookup_class=PlaceLookup,
@@ -72,10 +88,6 @@ class CharacterForm(forms.ModelForm):
     #     widget=selectable.AutoCompleteSelectWidget,
     #     # widget=forms.Select,
     # )
-
-    # Old select drop downs.
-    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-    building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
     # race
     RACES = (
@@ -164,7 +176,8 @@ class CharacterForm(forms.ModelForm):
         model = Character
         fields = (
             'name', 'region', 'place', 'building', 'race',
-            'strength', 'stamina', 'speed', 'agility', 'toughness', 'constitution', 'intelligence', 'logic', 'teaching', 'intuition', 'beauty', 'charisma'
+            'strength', 'stamina', 'speed', 'agility', 'toughness', 'constitution', 'intelligence', 'logic', 'teaching', 'intuition', 'beauty', 'charisma',
+            'topregion', 'subplace',
         )
 
     # class CharacterForm(forms.Form):
