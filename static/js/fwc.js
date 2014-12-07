@@ -18,6 +18,19 @@
     $('#id_place_0').djselectable('option', 'prepareQuery', newParameters);
   });
 
+  $("select#id_topregion").change(function(){
+    $.getJSON("/pages/feeds/places/"+$(this).val()+"/", function(j) {
+      var options = '<option value="">---------- </option>';
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value="' + parseInt(j[i].pk) + '">' + j[i].fields['longname'] + '</option>';
+      }
+      $("#id_subplace").html(options);
+      $("#id_subplace option:first").attr('selected', 'selected');
+      $("#id_subplace").attr('disabled', false);
+    });
+    $("#id_topregion").attr('selected', 'selected');
+  });
+
   // $( "#id_place_0" ).blur(function() {
   //   console.log('CLICKED');
   //   console.log($('#id_place_0').val());
