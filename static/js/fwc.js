@@ -9,22 +9,14 @@
       console.log(j);
       // Json objects count.
       console.log(j.length);
+      console.log(j[0]['fields']);
+      console.log(j[0]['fields']['name']);
+      console.log(j[0]['pk']);
       var items = [];
       var options = '<option value="">Select place</option>';
-      // $.each(j, function(j.fields['region'], j.fields['name'])) {
-      //   items.push('<option value="' + j.fields['region'] + '">' + j.fields['name'] + '</options>');
-      // }
-      // $.each( data, function( key, val ) {
-      //   items.push( "<li id='" + key + "'>" + val + "</li>" );
-      // });
 
-      // $( "<ul/>", {
-      //   "class": "my-new-list",
-      //   html: items.join( "" )
-      // }).appendTo( "body" );
       for (var i = 0; i < j.length; i++) {
-        // console.log(j.fields.name);
-        options += '<option value="primary key goes here">place name here</option>';
+        options += '<option value="' + j[i]['pk'] + '">' + j[i]['fields']['name'] + '</option>';
         // options += '<option value="' + j.pk + '">' + j.fields['name'] + '</option>';
       }
       $("#id_subplace").html(options);
