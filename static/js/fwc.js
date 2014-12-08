@@ -1,11 +1,11 @@
 (function ($, window, document, undefined) {
 
   // Get option values from feeds_subcat view.
-  $("select#id_topregion").change(function(){
+  $("select#id_region").change(function(){
     $.getJSON("/pages/feeds/places/"+$(this).val()+"/", function(j) {
       // Json objects.
       console.log(j);
-      // Json objects count.
+      // Json objects count and data.
       console.log(j.length);
       console.log(j[0]['fields']);
       console.log(j[0]['fields']['name']);
@@ -16,13 +16,36 @@
 
       for (var i = 0; i < j.length; i++) {
         options += '<option value="' + j[i]['pk'] + '">' + j[i]['fields']['name'] + '</option>';
-        // options += '<option value="' + j.pk + '">' + j.fields['name'] + '</option>';
       }
-      $("#id_subplace").html(options);
-      $("#id_subplace option:first").attr('selected', 'selected');
-      $("#id_subplace").attr('disabled', false);
+      $("#id_place").html(options);
+      $("#id_place option:first").attr('selected', 'selected');
+      $("#id_place").attr('disabled', false);
     });
-    $("#id_topregion").attr('selected', 'selected');
+    $("#id_region").attr('selected', 'selected');
+  });
+
+  // Get option values from feeds_subcat view.
+  $("select#id_place").change(function(){
+    $.getJSON("/pages/feeds/buildings/"+$(this).val()+"/", function(j) {
+      // Json objects.
+      console.log(j);
+      // Json objects count and data.
+      console.log(j.length);
+      console.log(j[0]['fields']);
+      console.log(j[0]['fields']['name']);
+      console.log(j[0]['pk']);
+
+      var items = [];
+      var options = '<option value="">Select place</option>';
+
+      for (var i = 0; i < j.length; i++) {
+        options += '<option value="' + j[i]['pk'] + '">' + j[i]['fields']['name'] + '</option>';
+      }
+      $("#id_building").html(options);
+      $("#id_building option:first").attr('selected', 'selected');
+      $("#id_building").attr('disabled', false);
+    });
+    $("#id_place").attr('selected', 'selected');
   });
 
   $('#id_place_0').attr('placeholder', 'Select a place');
