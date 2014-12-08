@@ -2,8 +2,6 @@
 
   // Get option values from feeds_subcat view.
   $("select#id_topregion").change(function(){
-    // Tells if we make it inside change function.
-    console.log('Inside $("select#id_topregion").change(function().');
     $.getJSON("/pages/feeds/places/"+$(this).val()+"/", function(j) {
       // Json objects.
       console.log(j);
@@ -12,6 +10,7 @@
       console.log(j[0]['fields']);
       console.log(j[0]['fields']['name']);
       console.log(j[0]['pk']);
+
       var items = [];
       var options = '<option value="">Select place</option>';
 

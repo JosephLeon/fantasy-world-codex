@@ -136,13 +136,5 @@ def add_character(request):
 
 
 def feeds_subcat(request, region_id):
-    # json_subcat = serializers.serialize("json", Place.objects.filter(region=region_id))
-    json_subcat = serializers.serialize("json", Place.objects.all())
-    # return HttpResponse(json_subcat, mimetype="application/javascript")
+    json_subcat = serializers.serialize("json", Place.objects.filter(region=region_id))
     return HttpResponse(json_subcat)
-
-
-# hdef feeds_subcat(request, cat_id):
-#     from django.core import serializers
-#     json_subcat = serializers.serialize("json", ProductSubCategory.objects.filter(prodcat = cat_id))
-#     return HttpResponse(json_subcat, mimetype="application/javascript")
