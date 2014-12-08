@@ -66,10 +66,11 @@ class CharacterForm(forms.ModelForm):
     )
     subplace = forms.ModelChoiceField(
         Place.objects,
+        # widget=forms.Select,
+        empty_label='parent place',
         widget=forms.Select(
             attrs={'disabled': 'true'}
         ),
-        empty_label='parent place',
     )
 
     # place = selectable.AutoCompleteSelectField(
