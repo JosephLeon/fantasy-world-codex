@@ -135,6 +135,11 @@ def add_character(request):
     return render(request, 'pages/add_character.html', {'form': form})
 
 
-def feeds_subcat(request, region_id):
+def feeds_places(request, region_id):
     json_subcat = serializers.serialize("json", Place.objects.filter(region=region_id))
+    return HttpResponse(json_subcat)
+
+
+def feeds_buildings(request, place_id):
+    json_subcat = serializers.serialize("json", Building.objects.filter(place=place_id))
     return HttpResponse(json_subcat)
