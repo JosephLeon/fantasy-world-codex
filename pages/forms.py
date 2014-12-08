@@ -50,24 +50,32 @@ class CharacterForm(forms.ModelForm):
     )
 
     # Chain select the following three selects
-    region = forms.ModelChoiceField(
-        queryset=Region.objects.all(),
-        required=True,
-        empty_label=('Select a region'),
-    )
+    # region = forms.ModelChoiceField(
+    #     queryset=Region.objects.all(),
+    #     required=True,
+    #     empty_label=('Select a region'),
+    # )
     # Old select drop downs.
-    place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-    building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
+    # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
+    # building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
 
-    topregion = forms.ModelChoiceField(
+    region = forms.ModelChoiceField(
         Region.objects,
         widget=forms.Select,
-        empty_label='parent region',
+        empty_label='Select region',
     )
-    subplace = forms.ModelChoiceField(
+    place = forms.ModelChoiceField(
         Place.objects,
         # widget=forms.Select,
-        empty_label='parent place',
+        empty_label='Select place',
+        widget=forms.Select(
+            attrs={'disabled': 'true'}
+        ),
+    )
+    building = forms.ModelChoiceField(
+        Building.objects,
+        # widget=forms.Select,
+        empty_label='Select building',
         widget=forms.Select(
             attrs={'disabled': 'true'}
         ),
@@ -178,20 +186,9 @@ class CharacterForm(forms.ModelForm):
         fields = (
             'name', 'region', 'place', 'building', 'race',
             'strength', 'stamina', 'speed', 'agility', 'toughness', 'constitution', 'intelligence', 'logic', 'teaching', 'intuition', 'beauty', 'charisma',
-            'topregion', 'subplace',
+            # 'topregion', 'subplace',
         )
-
-    # class CharacterForm(forms.Form):
-
-    # def __init__(self, *args, **kwargs):
-    #     super(CharacterForm, self).__init__(*args, **kwargs)
-    #     self.helper = FormHelper()
-    #     self.helper.form_id = 'id-exampleForm'
-    #     self.helper.form_class = 'blueForms'
-    #     self.helper.form_method = 'post'
-    #     self.helper.form_action = 'submit_survey'
-
-    #     self.helper.add_input(Submit('submit', 'Submit'))
+        exclude = ('',)
 
 
 class UserForm(forms.ModelForm):
