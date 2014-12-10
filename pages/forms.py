@@ -66,7 +66,6 @@ class CharacterForm(forms.ModelForm):
     )
     place = forms.ModelChoiceField(
         Place.objects,
-        # widget=forms.Select,
         empty_label='Select place',
         widget=forms.Select(
             attrs={'disabled': 'true'}
@@ -74,7 +73,6 @@ class CharacterForm(forms.ModelForm):
     )
     building = forms.ModelChoiceField(
         Building.objects,
-        # widget=forms.Select,
         empty_label='Select building',
         widget=forms.Select(
             attrs={'disabled': 'true'}
