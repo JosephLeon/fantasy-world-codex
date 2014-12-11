@@ -98,7 +98,7 @@ class CharacterForm(forms.ModelForm):
 
     # race
     RACES = (
-        ('', '-- Race --'),
+        ('', 'Select race'),
         ('Human', 'Human'),
         ('Dwarf', 'Dwarf'),
         ('Elf', 'Elf'),
@@ -138,7 +138,7 @@ class CharacterForm(forms.ModelForm):
 
     # class
     CLASSES = (
-        ('', '-- Class --'),
+        ('', 'Select class'),
         ('Fighter', 'Fighter'),
         ('Thief', 'Thief'),
         ('Survivalist', 'Survivalist'),
