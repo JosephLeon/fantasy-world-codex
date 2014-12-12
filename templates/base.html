@@ -50,7 +50,7 @@
       <!-- Right Nav Section -->
       <ul class="right">
         {% if user.is_authenticated %}
-          <li><a href="#" title="Bestiary">Bestiary</a></li>
+          <li><a href="{% url 'pages:beastiary' %}" title="Beastiary">Beastiary</a></li>
           <li><a href="#" title="Armory">Armory</a></li>
           <li class="has-dropdown">
             <a href="#">Add</a>
