@@ -49,16 +49,6 @@ class CharacterForm(forms.ModelForm):
         ),
     )
 
-    # Chain select the following three selects
-    # region = forms.ModelChoiceField(
-    #     queryset=Region.objects.all(),
-    #     required=True,
-    #     empty_label=('Select a region'),
-    # )
-    # Old select drop downs.
-    # place = forms.ModelChoiceField(Place.objects, widget=forms.Select, empty_label="-- Places --")
-    # building = forms.ModelChoiceField(Building.objects, widget=forms.Select, empty_label="-- Buildings --")
-
     region = forms.ModelChoiceField(
         Region.objects,
         widget=forms.Select,
