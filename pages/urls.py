@@ -4,6 +4,7 @@ from pages import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
+    url(r'^beastiary/$', views.beastiary, name='beastiary'),
     url(r'^add_region/$', views.add_region, name='add_region'),
     url(r'^add_place/$', views.add_place, name='add_place'),
     url(r'^add_character/$', views.add_character, name='add_character'),
