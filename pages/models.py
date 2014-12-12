@@ -160,3 +160,33 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Beast(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    item = models.ForeignKey(Item, blank=True, null=True)
+    treasure = models.TextField(blank=True)
+
+    # Combat.
+    attack = models.IntegerField(default=12)
+    defense = models.IntegerField(default=12)
+    damage = models.IntegerField(default=12)
+
+    # Stats.
+    strength = models.IntegerField(default=12)
+    stamina = models.IntegerField(default=12)
+    speed = models.IntegerField(default=12)
+    agility = models.IntegerField(default=12)
+    toughness = models.IntegerField(default=12)
+    constitution = models.IntegerField(default=12)
+    intelligence = models.IntegerField(default=12)
+    logic = models.IntegerField(default=12)
+    teaching = models.IntegerField(default=12)
+    intuition = models.IntegerField(default=12)
+    beauty = models.IntegerField(default=12)
+    charisma = models.IntegerField(default=12)
+    leadership = models.IntegerField(default=12)
+
+    def __str__(self):
+        return self.name
