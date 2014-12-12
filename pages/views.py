@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from pages.models import Region, Place, Building, Character, Item
+from pages.models import Region, Place, Building, Character, Item, Beast
 from pages.forms import RegionForm, PlaceForm, CharacterForm
 
 from django.http import HttpResponseRedirect, HttpResponse
@@ -143,3 +143,12 @@ def feeds_places(request, region_id):
 def feeds_buildings(request, place_id):
     json_subcat = serializers.serialize("json", Building.objects.filter(place=place_id))
     return HttpResponse(json_subcat)
+
+
+def beastiary(request):
+    context_dict = {}
+
+    beasts = Beast.objects.all()
+    context_dict['beasts'] = beasts
+
+    return render(request, 'pages/beastiary.html', context_dict)
