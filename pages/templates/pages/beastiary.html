@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block base_body %}
+  <h1>Beastiary</h1>
+  {% if beasts %}
+    <ul>
+      {% for beast in beasts %}
+        <li>{{ beast }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock base_body %}
