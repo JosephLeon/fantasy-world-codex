@@ -3,6 +3,14 @@
 {% load staticfiles %}
 
 {% block base_body %}
+  {% if location_list %}
+    <h2>Locations</h2>
+    <ul>
+      {% for location in location_list %}
+        <li>{{ location.name }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   <h2>Regions</h2>
   <p><a href="/pages/add_region/">Add a New Region</a></p>
   {% if region_list %}
