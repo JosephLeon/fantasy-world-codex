@@ -194,4 +194,7 @@ class Beast(models.Model):
 
 class Location(models.Model):
     name = models.CharField(max_length=200)
-    other_location = models.ForeignKey('self')
+    other_location = models.ForeignKey('self', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
