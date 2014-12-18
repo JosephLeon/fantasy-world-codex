@@ -196,5 +196,23 @@ class Location(models.Model):
     name = models.CharField(max_length=200)
     other_location = models.ForeignKey('self', blank=True, null=True)
 
+    LOCATION_TYPE = (
+        ('Universe', 'Universe'),
+        ('Planet', 'Planet'),
+        ('Continent', 'Continent'),
+        ('Region', 'Region'),
+        ('Country', 'Country'),
+        ('Province', 'Province'),
+        ('City', 'City'),
+        ('Area', 'Area'),
+        ('Building', 'Building'),
+    )
+
+    location_type = models.CharField(
+        max_length=255,
+        choices=LOCATION_TYPE,
+        default='Continent',
+    )
+
     def __str__(self):
         return self.name
