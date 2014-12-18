@@ -7,7 +7,12 @@
     <h2>Locations</h2>
     <ul>
       {% for location in location_list %}
-        <li>{{ location.name }}</li>
+        {% if location.location_type == 'Universe' %}
+          <li>{{ location.name }} : {{ location.location_type }}</li>
+          {# {% if location.id =  %} #}
+
+          {# {% endif %} #}
+        {% endif %}
       {% endfor %}
     </ul>
   {% endif %}
