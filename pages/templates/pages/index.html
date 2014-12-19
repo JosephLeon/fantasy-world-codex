@@ -7,12 +7,28 @@
     <h2>Locations</h2>
     <ul>
       {% for location in location_list %}
-        {% if location.location_type == 'Universe' %}
-          <li>{{ location.name }} : {{ location.location_type }}</li>
+        {# {% if location.location_type == 'Universe' %} #}
+          <li>{{ location.name }}({{ location.id }}) : {{ location.location_type }} : {{ location.other_location }}({{ location.other_location.id }})</li>
+          {% if location.id = location.other_location.id %}
+            <ul>
+              <li>{{ location.name }}({{ location.id }}) : {{ location.location_type }}</li>
+            </ul>
+          {% endif %}
+        {# {% endif %} #}
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if location_list %}
+    <h2>Locations</h2>
+    <ul>
+      {% for location in location_list %}
+        {# {% if location.location_type == 'Universe' %} #}
+          <li>{{ location.name }}({{ location.id }}) : {{ location.location_type }} : {{ location.other_location }}({{ location.other_location.id }})</li>
           {# {% if location.id =  %} #}
 
           {# {% endif %} #}
-        {% endif %}
+        {# {% endif %} #}
       {% endfor %}
     </ul>
   {% endif %}
