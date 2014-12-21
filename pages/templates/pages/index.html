@@ -19,19 +19,6 @@
     </ul>
   {% endif %}
 
-  {% if location_list %}
-    <h2>Locations</h2>
-    <ul>
-      {% for location in location_list %}
-        {# {% if location.location_type == 'Universe' %} #}
-          <li>{{ location.name }}({{ location.id }}) : {{ location.location_type }} : {{ location.other_location }}({{ location.other_location.id }})</li>
-          {# {% if location.id =  %} #}
-
-          {# {% endif %} #}
-        {# {% endif %} #}
-      {% endfor %}
-    </ul>
-  {% endif %}
   <h2>Regions</h2>
   <p><a href="/pages/add_region/">Add a New Region</a></p>
   {% if region_list %}
