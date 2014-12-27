@@ -19,6 +19,12 @@ def index(request):
     context['character_list'] = character_list
     location_list = Location.objects.all()
     context['location_list'] = location_list
+
+    '''
+    ToDo: Write a function or view that can be rendered listing all parent
+    locations and there children, and those childrens children etc.
+    '''
+
     return render(request, 'pages/index.html', context)
 
 
